@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
@@ -17,7 +17,10 @@ const listingsSchema = new Schema(
     NoOfBedrooms: { type: Number },
     NoOfBathrooms: { type: Number },
     FlooringType: { type: String, enum: ['Carpet', 'WoodenFlooring'] },
-    HomeType: { type: String, enum: ['Apartment', 'Townhome', 'Attached Single Family Home', 'Detached'] },
+    HomeType: {
+      type: String,
+      enum: ['Apartment', 'Townhome', 'Attached Single Family Home', 'Detached'],
+    },
     Parking: { type: String, enum: ['Open', 'Closed', 'No'] },
     Amenities: { type: String },
     LeaseTerms: { type: String },
@@ -25,7 +28,7 @@ const listingsSchema = new Schema(
     SecurityDeposit: { type: Number },
     YearBuilt: { type: Number },
     AvailableAs: { type: Number },
-    OpenHouse: { type: String }
+    OpenHouse: { type: String },
   },
   { versionKey: false }
 );

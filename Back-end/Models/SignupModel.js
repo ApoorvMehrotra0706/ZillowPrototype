@@ -6,13 +6,12 @@ const signupSchema = new Schema(
   {
     EmailID: { type: String, required: true },
     Password: { type: String, required: true },
-    Role: { type: String, required: true },
-    Status: {
+    Role: {
       type: String,
-      enum: ['Accepted', 'Pending'],
+      enum: ['Admin', 'Buyer', 'Seller', 'Renter', 'Landlord', 'Realtor'],
       required: true,
-      default: 'Pending',
     },
+    Status: { type: String, enum: ['Accepted', 'Pending'], required: true, default: 'Pending' },
   },
   { versionKey: false }
 );

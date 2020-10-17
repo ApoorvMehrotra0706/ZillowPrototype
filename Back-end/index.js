@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 if (process.env.NODE_ENV !== 'production') {
   // eslint-disable-next-line global-require
   require('dotenv').config();
@@ -48,7 +49,8 @@ const options = {
   bufferMaxEntries: 0,
 };
 
-mongoose.connect(mongoDB, options, (err) => {
+// eslint-disable-next-line no-unused-vars
+mongoose.connect(mongoDB, options, (err, res) => {
   if (err) {
     console.log('MongoDB connection Failesd', err);
   } else {

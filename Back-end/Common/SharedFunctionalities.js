@@ -9,7 +9,7 @@ require('dotenv').config();
 
 const UserSignup = require('../Models/SignupModel');
 const StaticModel = require('../Models/StaticModel');
-
+const Users = require('../Models/UsersModel');
 const { auth } = require('../Utils/passport');
 
 auth();
@@ -115,4 +115,61 @@ const login = async (request, response) => {
   return response;
 };
 
-module.exports = { login, staticInsert, staticFetch };
+const signup = async (req, res) => {
+  UserSignup.findOne({ EmailID: req.body.emailID, Role: req.body.Role }, async (error, result) => {
+    if (error) {
+      res.writeHead(500, {
+        'Content-Type': 'text/plain',
+      });
+      res.end();
+    }
+    if (result) {
+      res.writeHead(400, {
+        'Content-Type': 'text/plain',
+      });
+      res.end('EmailID already in use for the same role');
+    } else {
+      const hashedPassword = await bcrypt.hash(req.body.Password, 10);
+      const signupUser = new UserSignup({ ...req.body, Password: hashedPassword });
+      // eslint-disable-next-line no-unused-vars
+      signupUser.save((e, data) => {
+        if (e) {
+          res.writeHead(500, {
+            'Content-Type': 'text/plain',
+          });
+          res.end();
+        } else {
+          const user = new Users({ ...req.body, UserID: data._id });
+          // eslint-disable-next-line no-unused-vars
+          user.save((e1, data1) => {
+            if (e) {
+              res.writeHead(500, {
+                'Content-Type': 'text/plain',
+              });
+              res.end();
+            } else {
+              res.writeHead(200, {
+                'Content-Type': 'text/plain',
+              });
+              res.end();
+            }
+          });
+        }
+      });
+    }
+  });
+};
+
+// Logout
+const logout = async (req, res) => {
+  req.logout();
+  res.status(200).end('Logged out');
+};
+
+module.exports = {
+  signup,
+  logout,
+  login,
+  staticInsert,
+  staticFetch,
+};
