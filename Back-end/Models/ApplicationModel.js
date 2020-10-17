@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
@@ -13,9 +13,9 @@ const applicationSchema = new Schema(
     // RealtorName: { type: String },
     Status: {
       type: String,
-      enum: ["Pending", "Accepted", "Rejected"],
+      enum: ['Pending', 'Accepted', 'Rejected'],
       required: true,
-      default: "Pending",
+      default: 'Pending',
     },
     PriceQuoted: { type: Number, required: true },
     Message: { type: String },
@@ -25,7 +25,7 @@ const applicationSchema = new Schema(
   { versionKey: false }
 );
 
-userSignupSchema.index({ ApplicantID: 1, ListingID: 1 }, { unique: true });
+applicationSchema.index({ ApplicantID: 1, ListingID: 1 }, { unique: true });
 
-const ApplicationModel = mongoose.model("application", applicationSchema);
+const ApplicationModel = mongoose.model('application', applicationSchema);
 module.exports = ApplicationModel;
