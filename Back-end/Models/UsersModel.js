@@ -9,7 +9,7 @@ const userSchema = new Schema(
     LastName: { type: String, required: true },
     DOB: { type: String, required: true },
     ImageURL: { type: String },
-    Contact: { type: Number, required: true },
+    Contact: { type: Number, min: 1000000000, max: 9999999999, required: true },
     FavouriteHomes: [
       {
         ListingID: { type: String, required: true },
