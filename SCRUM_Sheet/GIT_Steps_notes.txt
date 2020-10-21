@@ -1,0 +1,51 @@
+
+1. After cloning master branch go to the main branch using
+# git checkout main
+
+2. Verify whether you are on main branch
+# git branch
+
+2. Then based on your name create a new branch in this main branch
+# git checkout -b swapnil/Create_SCRUM_Sheet
+
+3. Add your code to this branch ; its visible in the git command code like this
+16692@DESKTOP-LC9P1LK MINGW64 /d/SJSU/NEW_SEM/202/Project/fa20-cmpe-202-sec-02-team-project-team_3 
+(swapnil/Create_SCRUM_Sheet)
+
+# git add .
+
+4. Then commit and push in that particular branch
+
+# git commit -m "Issue name"
+# git push origin swapnil/Create_SCRUM_Sheet
+
+5. Once this is done go to your github code page and you will have a branch merge notification on the top click it 
+and it will add the new pull request.Issue with our repo is that Prof. is the owner. So we cannot change the default merge branch which is master. 
+So every time we merge a pull request, goto the pull request. Edit it change the merge branch at the top.
+we need to specify in the GUI where to merge. Then merge.
+
+6. On review in the weekly meeting we can merge the branch to the main and delete the branch ending the Sprint for that
+issue.
+
+7. All new issues will be created by the SCRUM master and will be merged by the SCRUM master. Pull request and 
+code commits needs to be done by the individual users. If you wish to create sub issues we can just modify existing 
+issues and new ones to make the sub-division.
+
+
+8. How to merge branches?
+1) Go to source branch
+# git checkout "source branch"
+
+2) update locally source branch
+# git pull origin "source branch"
+
+3) go to destination branch
+# git checkout "destination branch"
+
+4) update destination branch
+# git pull origin "destination branch"
+
+5) merge source branch
+# git merge "source branch"
+
+
