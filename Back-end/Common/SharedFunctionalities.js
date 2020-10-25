@@ -137,7 +137,7 @@ const signup = async (req, res) => {
           res.writeHead(500, {
             'Content-Type': 'text/plain',
           });
-          res.end();
+          res.end('Network Error');
         } else {
           const user = new Users({ ...req.body, UserID: data._id });
           // eslint-disable-next-line no-unused-vars
@@ -146,12 +146,12 @@ const signup = async (req, res) => {
               res.writeHead(500, {
                 'Content-Type': 'text/plain',
               });
-              res.end();
+              res.end('Network Error');
             } else {
               res.writeHead(200, {
                 'Content-Type': 'text/plain',
               });
-              res.end();
+              res.end('Success');
             }
           });
         }
