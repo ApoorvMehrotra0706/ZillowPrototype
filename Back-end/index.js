@@ -12,6 +12,10 @@ const bodyParser = require('body-parser');
 
 const mongoose = require('mongoose');
 const commonPart = require('./Routes/headingRoutes');
+const realtor = require('./Routes/realtor');
+const landlord = require('./Routes/landlord');
+const seller = require('./Routes/seller');
+const buyer = require('./Routes/buyer');
 const { frontendURL, mongoDB } = require('./config');
 
 const app = express();
@@ -25,11 +29,10 @@ app.use(
     activeDuration: 5 * 60 * 1000,
   })
 );
-// app.use(cors());
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(upload.array());
+// eslint-disable-next-line func-names
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', frontendURL);
   res.setHeader('Access-Control-Allow-Credentials', 'true');
@@ -58,6 +61,10 @@ mongoose.connect(mongoDB, options, (err, res) => {
   }
 });
 
-app.use('/', commonPart);
+app.use('/housing', commonPart);
+app.use('/realtor', realtor);
+app.use('/landlord', landlord);
+app.use('/seller', seller);
+app.use('/buyer', buyer);
 
 app.listen(3002);

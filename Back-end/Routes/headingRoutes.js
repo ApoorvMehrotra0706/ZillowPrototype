@@ -9,7 +9,6 @@ const {
   staticFetch,
   staticInsert,
 } = require('../Common/SharedFunctionalities');
-const { validateUser } = require('../Utils/passport');
 
 // Insert Static Data
 Router.post('/staticInsert', async (req, res) => {
