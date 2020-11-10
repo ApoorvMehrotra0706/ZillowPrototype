@@ -114,48 +114,63 @@ const login = async (request, response) => {
 };
 
 const signup = async (req, res) => {
-  UserSignup.findOne({ EmailID: req.body.emailID, Role: req.body.Role }, async (error, result) => {
-    if (error) {
-      res.writeHead(500, {
-        'Content-Type': 'text/plain',
-      });
-      res.end();
-    }
-    if (result) {
-      res.writeHead(400, {
-        'Content-Type': 'text/plain',
-      });
-      res.end('EmailID already in use for the same role');
-    } else {
-      const hashedPassword = await bcrypt.hash(req.body.Password, 10);
-      const signupUser = new UserSignup({ ...req.body, Password: hashedPassword });
-      // eslint-disable-next-line no-unused-vars
-      signupUser.save((e, data) => {
-        if (e) {
+  try {
+    UserSignup.findOne(
+      { EmailID: req.body.emailID, Role: req.body.Role },
+      async (error, result) => {
+        if (error) {
           res.writeHead(500, {
             'Content-Type': 'text/plain',
           });
-          res.end('Network Error');
+          res.end();
+        }
+        if (result) {
+          res.writeHead(400, {
+            'Content-Type': 'text/plain',
+          });
+          res.end('EmailID already in use for the same role');
         } else {
-          const user = new Users({ ...req.body, UserID: data._id });
+          const hashedPassword = await bcrypt.hash(req.body.Password, 10);
+          const signupUser = new UserSignup({
+            EmailID: req.body.emailID,
+            Password: hashedPassword,
+            Role: req.body.Role,
+            Name: req.body.Name,
+          });
           // eslint-disable-next-line no-unused-vars
-          user.save((e1, data1) => {
+          signupUser.save((e, data) => {
             if (e) {
               res.writeHead(500, {
                 'Content-Type': 'text/plain',
               });
               res.end('Network Error');
             } else {
-              res.writeHead(200, {
-                'Content-Type': 'text/plain',
+              const user = new Users({ ...req.body, UserID: data._id });
+              // eslint-disable-next-line no-unused-vars
+              user.save((e1, data1) => {
+                if (e1) {
+                  res.writeHead(500, {
+                    'Content-Type': 'text/plain',
+                  });
+                  res.end('Network Error');
+                } else {
+                  res.writeHead(200, {
+                    'Content-Type': 'text/plain',
+                  });
+                  res.end('Success');
+                }
               });
-              res.end('Success');
             }
           });
         }
-      });
-    }
-  });
+      }
+    );
+  } catch (error) {
+    res.writeHead(500, {
+      'Content-Type': 'text/plain',
+    });
+    res.end('Network Error');
+  }
 };
 
 // Logout
