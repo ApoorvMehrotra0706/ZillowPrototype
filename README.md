@@ -1,9 +1,9 @@
 # HomeFinder - Web application (Zillow.com Prototype)
 
 ## Group Members:
-* Apoorva Mehrotra
+* Apoorv Mehrotra
 * Pranav Karmalkar
-* Pranjay 
+* Pranjay Sagar 
 * Swapnil Parihar
 
 ## Problem Statement
