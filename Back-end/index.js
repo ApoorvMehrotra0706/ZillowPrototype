@@ -13,6 +13,10 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const commonPart = require('./Routes/headingRoutes');
 const admin = require('./Routes/adminRoutes');
+const realtor = require('./Routes/realtor');
+const landlord = require('./Routes/landlord');
+const seller = require('./Routes/seller');
+const buyer = require('./Routes/buyer');
 const { frontendURL, mongoDB } = require('./config');
 const { auth } = require('./Utils/passport');
 
@@ -29,7 +33,6 @@ app.use(
     activeDuration: 5 * 60 * 1000,
   })
 );
-// app.use(cors());
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -66,5 +69,9 @@ mongoose.connect(mongoDB, options, (err, res) => {
 app.use('/housing', commonPart);
 
 app.use('/admin', admin);
+app.use('/realtor', realtor);
+app.use('/landlord', landlord);
+app.use('/seller', seller);
+app.use('/buyer', buyer);
 
 app.listen(3002);

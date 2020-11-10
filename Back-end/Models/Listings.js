@@ -8,8 +8,9 @@ const listingsSchema = new Schema(
     StreetAddress: { type: String, required: true },
     State: { type: String, required: true },
     Country: { type: String, required: true },
-    OwnerID: { type: String, required: true },
-    OwnerName: { type: String, required: true },
+    OwnerID: { type: String },
+    OwnerEmail: { type: String },
+    OwnerName: { type: String },
     Price: { type: Number, required: true },
     RealtorID: { type: String },
     RealtorName: { type: String },
@@ -29,9 +30,11 @@ const listingsSchema = new Schema(
     YearBuilt: { type: Number },
     AvailableAs: { type: Number },
     OpenHouse: { type: String },
+    EmailForApplicatoin: { type: String },
   },
   { versionKey: false }
 );
+/** Add email to which applications should be sent, input while creating listing, also owner's email will be a field */
 
 const ListingsModel = mongoose.model('listing', listingsSchema);
 module.exports = ListingsModel;
