@@ -63,6 +63,57 @@ class ListingPosters extends User {
     }
     return response;
   }
+
+  getListing(filter, response) {
+    try {
+      Listing.find(filter, async (error, listings) => {
+        if (error) {
+          response.writeHead(500, {
+            'Content-Type': 'text/plain',
+          });
+          response.end('Network Error');
+        } else {
+          response.writeHead(200, {
+            'Content-Type': 'text/plain',
+          });
+          response.end(JSON.stringify(listings));
+        }
+      });
+    } catch (error) {
+      response.writeHead(500, {
+        'Content-Type': 'text/plain',
+      });
+      response.end('Network error');
+    }
+    return response;
+  }
+
+  getApplications(filter, Filter, response) {
+    try {
+      if (Filter !== 'All') {
+        filter.push({ Status: Filter });
+      }
+      Applications.find({ $and: filter }, (error, applications) => {
+        if (error) {
+          response.writeHead(500, {
+            'Content-Type': 'text/plain',
+          });
+          response.end('Network Error');
+        } else {
+          response.writeHead(200, {
+            'Content-Type': 'text/plain',
+          });
+          response.end(JSON.stringify(applications));
+        }
+      });
+    } catch (error) {
+      response.writeHead(500, {
+        'Content-Type': 'text/plain',
+      });
+      response.end('Network error');
+    }
+    return response;
+  }
 }
 
 module.exports = ListingPosters;
