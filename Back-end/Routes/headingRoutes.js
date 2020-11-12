@@ -10,6 +10,9 @@ const {
   staticInsert,
 } = require('../Common/SharedFunctionalities');
 
+const { validateUser } = require('../Utils/passport');
+const User = require('../Users/User');
+
 // Insert Static Data
 Router.post('/staticInsert', async (req, res) => {
   console.log('Insert static data');
@@ -43,6 +46,20 @@ Router.post('/signup', async (req, res) => {
 // Logout for the Restaurant
 Router.post('/logout', async (req, res) => {
   const value = await logout(req, res);
+  return value;
+});
+
+// Add favorite home for a user
+Router.post('/addFavoriteHome', validateUser, async (req, res) => {
+  const userObj = new User();
+  const value = await userObj.addFavoriteHome(req, res);
+  return value;
+});
+
+// Add favorite search for a user
+Router.post('/addFavoriteSearch', validateUser, async (req, res) => {
+  const userObj = new User();
+  const value = await userObj.addFavoriteSearch(req, res);
   return value;
 });
 

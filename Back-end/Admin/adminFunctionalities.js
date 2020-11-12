@@ -51,7 +51,7 @@ class Admin {
       res.writeHead(500, {
         'Content-Type': 'text/plain',
       });
-      res.end('Master Data Fetch Failed');
+      res.end('Signup list fetch failed');
     }
     return res;
   }
