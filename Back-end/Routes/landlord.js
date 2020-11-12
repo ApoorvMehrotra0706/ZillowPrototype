@@ -23,4 +23,26 @@ Router.post('/updateListing', validateUser, async (req, res) => {
   return results;
 });
 
+Router.get('/getListing', validateUser, async (req, res) => {
+  console.log('Update new Listing');
+  const { OwnerID } = url.parse(req.url, true).query;
+
+  let results = null;
+  const filter = { OwnerID };
+  const landlord = new Landlord();
+  results = await landlord.getListing(filter, res);
+  return results;
+});
+
+Router.get('/getApplications', validateUser, async (req, res) => {
+  console.log('Get All applications for particular listing');
+  const { OwnerID, ListingID, Filter } = url.parse(req.url, true).query;
+
+  let results = null;
+  const filter = [{ OwnerID }, { ListingID }];
+  const landlord = new Landlord();
+  results = await landlord.getApplications(filter, Filter, res);
+  return results;
+});
+
 module.exports = Router;
