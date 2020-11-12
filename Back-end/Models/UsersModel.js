@@ -1,15 +1,14 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
 const userSchema = new Schema(
   {
     UserID: { type: String, required: true },
-    FirstName: { type: String, required: true },
-    LastName: { type: String, required: true },
-    DOB: { type: String, required: true },
+    Name: { type: String, required: true },
+    DOB: { type: String },
     ImageURL: { type: String },
-    Contact: { type: Number, min: 1000000000, max: 9999999999, required: true },
+    Contact: { type: Number, min: 1000000000, max: 9999999999 },
     FavouriteHomes: [
       {
         ListingID: { type: String, required: true },
@@ -28,17 +27,12 @@ const userSchema = new Schema(
         Area: { type: Number },
         NoOfBedrooms: { type: Number },
         NoOfBathrooms: { type: Number },
-        FlooringType: { type: String, enum: ["Carpet", "WoodenFlooring"] },
+        FlooringType: { type: String, enum: ['Carpet', 'WoodenFlooring'] },
         HomeType: {
           type: String,
-          enum: [
-            "Apartment",
-            "Townhome",
-            "Attached Single Family Home",
-            "Detached",
-          ],
+          enum: ['Apartment', 'Townhome', 'Attached Single Family Home', 'Detached'],
         },
-        Parking: { type: String, enum: ["Open", "Closed", "No"] },
+        Parking: { type: String, enum: ['Open', 'Closed', 'No'] },
         Amenities: { type: String },
         YearBuilt: { type: Number },
       },
@@ -49,5 +43,5 @@ const userSchema = new Schema(
 
 // userSignupSchema.index({ Email: 1, Role: 1 }, { unique: true });
 
-const UsersModel = mongoose.model("user", userSchema);
+const UsersModel = mongoose.model('user', userSchema);
 module.exports = UsersModel;

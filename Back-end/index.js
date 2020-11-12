@@ -12,13 +12,17 @@ const bodyParser = require('body-parser');
 
 const mongoose = require('mongoose');
 const commonPart = require('./Routes/headingRoutes');
+const admin = require('./Routes/adminRoutes');
 const realtor = require('./Routes/realtor');
 const landlord = require('./Routes/landlord');
 const seller = require('./Routes/seller');
 const buyer = require('./Routes/buyer');
 const { frontendURL, mongoDB } = require('./config');
+const { auth } = require('./Utils/passport');
 
 const app = express();
+
+auth();
 // use express session to maintain session data
 app.use(
   session({
@@ -32,6 +36,7 @@ app.use(
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(upload.array());
 // eslint-disable-next-line func-names
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', frontendURL);
@@ -62,6 +67,8 @@ mongoose.connect(mongoDB, options, (err, res) => {
 });
 
 app.use('/housing', commonPart);
+
+app.use('/admin', admin);
 app.use('/realtor', realtor);
 app.use('/landlord', landlord);
 app.use('/seller', seller);
