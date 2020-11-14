@@ -32,6 +32,16 @@ Router.get('/getListing', validateUser, async (req, res) => {
   return results;
 });
 
+Router.delete('/deleteListing', validateUser, async (req, res) => {
+  console.log('Delete Listing');
+  const { RealtorID, ListingID } = req.body;
+  let results = null;
+  const filter = [{ RealtorID }, { _id: ListingID }];
+  const realtor = new Realtor();
+  results = await realtor.deleteListing(filter, res);
+  return results;
+});
+
 Router.get('/getApplications', validateUser, async (req, res) => {
   console.log('Get All applications for particular listing');
   const { OwnerID, ListingID, Filter } = url.parse(req.url, true).query;
@@ -40,6 +50,16 @@ Router.get('/getApplications', validateUser, async (req, res) => {
   const filter = [{ OwnerID }, { ListingID }];
   const realtor = new Realtor();
   results = await realtor.getApplications(filter, Filter, res);
+  return results;
+});
+
+Router.post('/processApplication', validateUser, async (req, res) => {
+  console.log('Process application');
+  let results = null;
+  const { RealtorID, ApplicationID, ListingID, Status } = req.body;
+  const filter = [{ RealtorID }, { ListingID }, { _id: ApplicationID }];
+  const realtor = new Realtor();
+  results = await realtor.processApplication(filter, Status, res);
   return results;
 });
 

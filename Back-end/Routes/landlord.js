@@ -34,6 +34,16 @@ Router.get('/getListing', validateUser, async (req, res) => {
   return results;
 });
 
+Router.delete('/deleteListing', validateUser, async (req, res) => {
+  console.log('Delete Listing');
+  const { OwnerID, ListingID } = req.body;
+  let results = null;
+  const filter = [{ OwnerID }, { _id: ListingID }];
+  const landlord = new Landlord();
+  results = await landlord.deleteListing(filter, res);
+  return results;
+});
+
 Router.get('/getApplications', validateUser, async (req, res) => {
   console.log('Get All applications for particular listing');
   const { OwnerID, ListingID, Filter } = url.parse(req.url, true).query;
@@ -42,6 +52,16 @@ Router.get('/getApplications', validateUser, async (req, res) => {
   const filter = [{ OwnerID }, { ListingID }];
   const landlord = new Landlord();
   results = await landlord.getApplications(filter, Filter, res);
+  return results;
+});
+
+Router.post('/processApplication', validateUser, async (req, res) => {
+  console.log('Process application');
+  let results = null;
+  const { LandlordID, ApplicationID, ListingID, Status } = req.body;
+  const filter = [{ OwnerID: LandlordID }, { ListingID }, { _id: ApplicationID }];
+  const landlord = new Landlord();
+  results = await landlord.processApplication(filter, Status, res);
   return results;
 });
 
