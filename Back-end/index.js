@@ -17,6 +17,7 @@ const realtor = require('./Routes/realtor');
 const landlord = require('./Routes/landlord');
 const seller = require('./Routes/seller');
 const buyer = require('./Routes/buyer');
+const renter = require('./Routes/renter');
 const { frontendURL, mongoDB } = require('./config');
 const { auth } = require('./Utils/passport');
 
@@ -73,5 +74,6 @@ app.use('/realtor', realtor);
 app.use('/landlord', landlord);
 app.use('/seller', seller);
 app.use('/buyer', buyer);
+app.use('/renter', renter);
 
 app.listen(3002);
