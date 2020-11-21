@@ -10,16 +10,17 @@ const sendEmail = (sendTo) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'sagarpranjay',
-      pass: 'Pranjay@1990',
+      user: 'cmpe202zillow',
+      pass: 'Harrypotter1@',
     },
   });
 
   const mailOptions = {
-    from: 'sagarpranjay@gmail.com',
+    from: 'cmpe202zillow@gmail.com',
     to: sendTo,
     subject: 'Application for the Listing',
-    text: 'Please check the Application',
+    text:
+      'Dear User, You are being notified to have received an application for your listing. Please spare some time to llok into it -CMPE202Zillow',
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
@@ -48,10 +49,17 @@ class ApplicationSenders extends User {
           });
           newApplication.save((err, result) => {
             if (err) {
-              response.writeHead(500, {
-                'Content-Type': 'text/plain',
-              });
-              response.end('Network Error');
+              if (err.code === 11000) {
+                response.writeHead(404, {
+                  'Content-Type': 'text/plain',
+                });
+                response.end('Application already filed');
+              } else {
+                response.writeHead(500, {
+                  'Content-Type': 'text/plain',
+                });
+                response.end('Network Error');
+              }
             } else {
               sendEmail(listing.EmailForApplication);
               response.writeHead(201, {
