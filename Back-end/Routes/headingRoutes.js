@@ -63,4 +63,24 @@ Router.post('/addFavoriteSearch', validateUser, async (req, res) => {
   return value;
 });
 
+// Get favorite home of a user
+Router.get('/getFavoriteHome', validateUser, async (req, res) => {
+  const userObj = new User();
+  const value = await userObj.getFavoriteHome(req, res);
+  return value;
+});
+
+// Get favorite home of a user
+Router.get('/getFavoriteSearch', validateUser, async (req, res) => {
+  const userObj = new User();
+  const value = await userObj.getFavoriteSearch(req, res);
+  return value;
+});
+
+// Get favorite home of a user
+Router.get('/searchListing', async (req, res) => {
+  const userObj = new User();
+  const value = await userObj.searchListing(req, res);
+  return value;
+});
 module.exports = Router;
