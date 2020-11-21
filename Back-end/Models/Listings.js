@@ -30,7 +30,14 @@ const listingsSchema = new Schema(
     YearBuilt: { type: Number },
     AvailableAs: { type: Number },
     OpenHouse: { type: String },
-    EmailForApplicatoin: { type: String },
+    EmailForApplication: { type: String },
+    ImageURL: [String],
+    Status: {
+      type: String,
+      enum: ['Available', 'Rent Out', 'Sold'],
+      required: true,
+      default: 'Available',
+    },
   },
   { versionKey: false }
 );

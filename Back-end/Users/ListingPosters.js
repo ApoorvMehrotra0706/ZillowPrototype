@@ -88,6 +88,30 @@ class ListingPosters extends User {
     return response;
   }
 
+  deleteListing(filter, response) {
+    try {
+      Listing.deleteOne({ $and: filter }, (error) => {
+        if (error) {
+          response.writeHead(500, {
+            'Content-Type': 'text/plain',
+          });
+          response.end('Network Error');
+        } else {
+          response.writeHead(200, {
+            'Content-Type': 'text/plain',
+          });
+          response.end('Deleted Successfully!!');
+        }
+      });
+    } catch (error) {
+      response.writeHead(500, {
+        'Content-Type': 'text/plain',
+      });
+      response.end('Network error');
+    }
+    return response;
+  }
+
   getApplications(filter, Filter, response) {
     try {
       if (Filter !== 'All') {
@@ -104,6 +128,30 @@ class ListingPosters extends User {
             'Content-Type': 'text/plain',
           });
           response.end(JSON.stringify(applications));
+        }
+      });
+    } catch (error) {
+      response.writeHead(500, {
+        'Content-Type': 'text/plain',
+      });
+      response.end('Network error');
+    }
+    return response;
+  }
+
+  processApplication(filter, Status, response) {
+    try {
+      Applications.updateOne({ $and: filter }, { Status }, async (error) => {
+        if (error) {
+          response.writeHead(500, {
+            'Content-Type': 'text/plain',
+          });
+          response.end('Network Error');
+        } else {
+          response.writeHead(200, {
+            'Content-Type': 'text/plain',
+          });
+          response.end('Application Processed!');
         }
       });
     } catch (error) {
