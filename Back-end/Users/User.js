@@ -247,6 +247,8 @@ class User {
       res.end('Network error');
     }
   }
+
+  // getUserDetail(req, res) {}
 }
 
 module.exports = User;
