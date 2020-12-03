@@ -63,19 +63,20 @@ Project Task Board: https://github.com/gopinathsjsu/fa20-cmpe-202-sec-02-team-pr
 Backend: 
 
 Frontend: 
+
 Contains code developed in ReactJS developed with Visual Studio Code IDE. The index.js contains the routes for the different components.  The package.json file contains the dependencies needed for the frontend.  Frontend can be started by implementing the commands:
 
-npm -i
+npm -i\
 npm start
 
-Individual_wireframes:
-Contains all wireframes for the project. 
+Individual_wireframes:\
+Contains all wireframes for the project.
 
-SCRUM_Sheet:
+SCRUM_Sheet:\
 Contains the final SCRUM sheet for the project and the guidelines we developed on how to work using Git Version control collaboratively
 
-Key Files:
-API_Documentation.docx: List the various APIs designed for the project and explains their functionality.
-Journal.md: Contains the Weekly Scrum Report and XP Core Values practice during the project.
-SCRUM_Sheet/Team3_SCRUM_Sheet.xlsx: Contains the time allocation distribution for sprints and the complete Burndown Chart for the project.
+Key Files:\
+API_Documentation.docx: List the various APIs designed for the project and explains their functionality.\
+Journal.md: Contains the Weekly Scrum Report and XP Core Values practice during the project.\
+SCRUM_Sheet/Team3_SCRUM_Sheet.xlsx: Contains the time allocation distribution for sprints and the complete Burndown Chart for the project.\
 Team3.pptx: The PPT for demo
