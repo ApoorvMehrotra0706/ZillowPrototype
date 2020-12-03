@@ -1,7 +1,12 @@
 /* eslint-disable no-console */
+require('dotenv').config();
 const express = require('express');
 
 const Router = express.Router();
+
+const AWS = require('aws-sdk');
+const multer = require('multer');
+const multerS3 = require('multer-s3');
 const {
   signup,
   logout,
@@ -9,7 +14,55 @@ const {
   staticFetch,
   staticInsert,
 } = require('../Common/SharedFunctionalities');
+
+const { BUCKET_NAME } = process.env;
+const s3Storage = new AWS.S3({
+  accessKeyId: process.env.ACCESSKEYID,
+  secretAccessKey: process.env.SECRETACCESSKEY,
+});
+
+const mult = multer({
+  storage: multerS3({
+    s3: s3Storage,
+    bucket: BUCKET_NAME,
+    acl: 'public-read',
+    contentType: multerS3.AUTO_CONTENT_TYPE,
+    // eslint-disable-next-line func-names
+    // eslint-disable-next-line object-shorthand
+    key: function (req, file, cb) {
+      const folderName = 'glassdoor-proj';
+      cb(null, `${folderName}/${Date.now().toString()}/${file.originalname}`);
+    },
+  }),
+});
+
+const imageUpload = mult.single('file');
+
+const uploadFile = async (req, res) => {
+  try {
+    imageUpload(req, res, function (err) {
+      if (err instanceof multer.MulterError) {
+        res.json({ status: 400, error: err.message });
+      } else if (err) {
+        res.json({ status: 400, error: err.message });
+      } else {
+        res.writeHead(200, {
+          'Content-Type': 'text/plain',
+        });
+        res.end(req.file.location);
+      }
+    });
+  } catch (error) {
+    res.writeHead(401, {
+      'Content-Type': 'text/plain',
+    });
+    res.end('Network Error');
+  }
+  return res;
+};
+
 const { validateUser } = require('../Utils/passport');
+const User = require('../Users/User');
 
 // Insert Static Data
 Router.post('/staticInsert', async (req, res) => {
@@ -47,4 +100,43 @@ Router.post('/logout', async (req, res) => {
   return value;
 });
 
+// Add favorite home for a user
+Router.post('/addFavoriteHome', validateUser, async (req, res) => {
+  const userObj = new User();
+  const value = await userObj.addFavoriteHome(req, res);
+  return value;
+});
+
+// Add favorite search for a user
+Router.post('/addFavoriteSearch', validateUser, async (req, res) => {
+  const userObj = new User();
+  const value = await userObj.addFavoriteSearch(req, res);
+  return value;
+});
+
+// Get favorite home of a user
+Router.get('/getFavoriteHome', validateUser, async (req, res) => {
+  const userObj = new User();
+  const value = await userObj.getFavoriteHome(req, res);
+  return value;
+});
+
+// Get favorite home of a user
+Router.get('/getFavoriteSearch', validateUser, async (req, res) => {
+  const userObj = new User();
+  const value = await userObj.getFavoriteSearch(req, res);
+  return value;
+});
+
+// Get favorite home of a user
+Router.get('/searchListing', async (req, res) => {
+  const userObj = new User();
+  const value = await userObj.searchListing(req, res);
+  return value;
+});
+
+Router.get('/uploadImage', async (req, res) => {
+  const value = await uploadFile(req, res);
+  return value;
+});
 module.exports = Router;

@@ -7,7 +7,7 @@ const applicationSchema = new Schema(
     ListingID: { type: String, required: true },
     ApplicantID: { type: String, required: true },
     ApplicantName: { type: String, required: true },
-    OwnerID: { type: String, required: true },
+    OwnerID: { type: String },
     // OwnerName: { type: String, required: true },
     RealtorID: { type: String },
     // RealtorName: { type: String },
