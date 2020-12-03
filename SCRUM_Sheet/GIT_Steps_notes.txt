@@ -1,3 +1,8 @@
+Before doing anything first lets bring all the work from other users to your repository
+# git pull origin "main"
+
+
+
 
 1. After cloning master branch go to the main branch using
 # git checkout main
