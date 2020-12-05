@@ -6,6 +6,8 @@ import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { search1 } from "../../../action/listingAction";
 import { search } from "../../../action/searchAction";
 import UpdateHome from "./updateHome";
+import ApplyBuyer from "./applyBuyer";
+import ApplyRenter from "./applyRenter";
 import configPath from "../../../config";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -15,7 +17,8 @@ class HomeDescription extends React.Component {
     super(props);
     this.state = {
       show: false,
-      showApply: false,
+      showApplyBuyer: false,
+      showApplyRenter: false,
       ZIP: "",
       StreetAddress: "",
       State: "",
@@ -45,6 +48,29 @@ class HomeDescription extends React.Component {
     this.props.dispatch(search1(payload));
   }
 
+  handleCloseApplyBuyer = () => {
+    this.setState({
+      showApplyBuyer: false,
+    });
+  };
+
+  handleShowApplyRenter = () => {
+    this.setState({
+      showApplyRenter: true,
+    });
+  };
+
+  handleCloseApplyRenter = () => {
+    this.setState({
+      showApplyRenter: false,
+    });
+  };
+
+  handleShowApplyBuyer = () => {
+    this.setState({
+      showApplyBuyer: true,
+    });
+  };
   handleClose = () => {
     this.setState({
       show: false,
@@ -181,13 +207,13 @@ class HomeDescription extends React.Component {
     let y;
     if (localStorage.getItem("role") == "Buyer") {
       y = (
-        <Button variant="primary" onClick={this.applyBuyer}>
+        <Button variant="primary" onClick={this.handleShowApplyBuyer}>
           Apply
         </Button>
       );
     } else if (localStorage.getItem("role") == "Renter") {
       y = (
-        <Button variant="primary" onClick={this.applyRenter}>
+        <Button variant="primary" onClick={this.applyShowApplyRenter}>
           Apply
         </Button>
       );
@@ -270,6 +296,16 @@ class HomeDescription extends React.Component {
               <UpdateHome
                 show={this.state.show}
                 handleClose={this.handleClose}
+                homeID={this.props.match.params.id}
+              />
+              <ApplyBuyer
+                show={this.state.showApplyBuyer}
+                handleClose={this.handleCloseApplyBuyer}
+                homeID={this.props.match.params.id}
+              />
+              <ApplyRenter
+                show={this.state.showApplyRenter}
+                handleClose={this.handleCloseApplyRenter}
                 homeID={this.props.match.params.id}
               />
             </Col>
