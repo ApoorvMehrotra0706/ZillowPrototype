@@ -204,7 +204,7 @@ class HomeDescription extends React.Component {
     console.log(this.props.match.params.id);
     var data;
     if (this.state.success === true) {
-      <Redirect to="/houseListing" />;
+      return <Redirect to="/houseListing" />;
     }
     if (this.props.get_listing[0]) {
       data = this.props.get_listing[0];

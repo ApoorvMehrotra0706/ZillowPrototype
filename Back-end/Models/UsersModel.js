@@ -46,7 +46,7 @@ const userSchema = new Schema(
   { versionKey: false }
 );
 
-userSchema.index({ FavouriteHomes: 1 }, { unique: true });
+userSchema.index({ _id: 1, ' FavouriteHomes.ListingID': 1 }, { unique: true });
 
 const UsersModel = mongoose.model('user', userSchema);
 module.exports = UsersModel;
