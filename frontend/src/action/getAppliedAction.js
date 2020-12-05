@@ -6,7 +6,7 @@ const searchDispatcher = (payload) => {
   console.log("Inside registerCustomerDispatcher action");
   console.log("payload", payload);
   return {
-    type: GET_LISTING,
+    type: GET_APPLIED,
     payload,
   };
 };

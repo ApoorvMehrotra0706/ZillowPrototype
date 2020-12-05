@@ -40,30 +40,14 @@ export const registerCustomer = (payload) => {
             })
           );
         } else {
-          dispatch(
-            registerCustomerDispatcher({
-              ...response.data,
-              registerFlag: false,
-            })
-          );
+          alert(response)
         }
       })
       .catch((error) => {
         if (error.response) {
           console.log(error.response.data);
-          dispatch(
-            registerCustomerDispatcher({
-              ...error.response.data,
-              registerFlag: false,
-            })
-          );
         } else {
-          dispatch(
-            registerCustomerDispatcher({
-              res: "Network error",
-              registerFlag: false,
-            })
-          );
+          alert("Invalid Input")
         }
       });
   };

@@ -49,7 +49,7 @@ class SignUp extends React.Component {
               <h2>Register</h2>
               <Form onSubmit={this.handleSubmit}>
                 <Form.Group controlId="formBasicName">
-                <Form.Label>Email address</Form.Label>
+                <Form.Label>Enter Name</Form.Label>
                   <Form.Control
                     type="text"
                     placeholder="Enter name"

@@ -18,6 +18,7 @@ class AddHome extends React.Component {
       NoOfBedrooms: "",
       NoOfBathrooms: "",
       FlooringType: "",
+      OwnerEmail: "",
       HomeType: "",
       Parking: "",
       Amenities: "",
@@ -103,6 +104,7 @@ class AddHome extends React.Component {
         LeaseTerms: this.state.LeaseTerms,
         AvailabiltyDate: this.state.AvailabiltyDate,
         SecurityDeposit: this.state.SecurityDeposit,
+      
         YearBuilt,
         AvailableAs: this.state.AvailableAs,
         OpenHouse: this.state.OpenHouse,
@@ -112,6 +114,7 @@ class AddHome extends React.Component {
       if (localStorage.getItem("role") == "Realtor") {
         data["RealtorID"] = localStorage.getItem("_id");
         data["RealtorName"] = localStorage.getItem("name");
+        data["OwnerEmail"] = this.state.OwnerEmail;
         link = "/realtor/addListing";
       } else {
         data["OwnerEmail"] = localStorage.getItem("emailID");
@@ -189,6 +192,7 @@ class AddHome extends React.Component {
     }
     if (localStorage.getItem("role") == "Realtor") {
       realtor = (
+        <div>
         <Form.Group controlId="formGridBed">
           <Form.Label>AvailableAs</Form.Label>
           <Form.Control
@@ -203,6 +207,18 @@ class AddHome extends React.Component {
             <option value={2}>Rent</option>
           </Form.Control>
         </Form.Group>
+        <Form.Group controlId="formBasicPassword">
+        <Form.Label>Owner Email</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter Email"
+          value={this.state.OwnerEmail}
+          onChange={(e) => {
+            this.setState({ OwnerEmail: e.target.value });
+          }}
+        />
+      </Form.Group>
+      </div>
       );
     }
     return (
