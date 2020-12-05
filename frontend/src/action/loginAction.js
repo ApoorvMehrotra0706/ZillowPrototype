@@ -38,12 +38,15 @@ export const login = (payload) => {
           localStorage.setItem("role", decoded.userrole);
           localStorage.setItem("name", decoded.name);
           dispatch(loginDispatcher({ ...decoded, loginFlag: true }));
+        } else {
+          alert("Invalid Credentials");
         }
       })
       .catch((error) => {
         console.log(error);
         if (error.response) {
           console.log(error.response.data);
+          alert("Invalid Credentials");
           console.log("inside error of thunk ", {
             ...error.response.data,
             loginFlag: false,
@@ -52,6 +55,7 @@ export const login = (payload) => {
             loginDispatcher({ ...error.response.data, loginFlag: false })
           );
         } else {
+          alert("Invalid Credentials");
           dispatch(loginDispatcher({ res: "Network error", loginFlag: false }));
         }
       });
