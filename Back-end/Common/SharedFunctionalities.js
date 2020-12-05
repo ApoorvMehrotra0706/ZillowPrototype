@@ -73,7 +73,7 @@ const login = async (request, response) => {
           response.status(500).end('Error Occured');
         }
         if (user) {
-          if (user.Status == 'Accepted') {
+          if (user.Status === 'Accepted') {
             if (await bcrypt.compare(request.body.Password, user.Password)) {
               const payload = {
                 _id: user._id,

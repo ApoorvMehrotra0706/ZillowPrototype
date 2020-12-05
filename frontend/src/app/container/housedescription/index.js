@@ -46,7 +46,7 @@ class HomeDescription extends React.Component {
       Parking: "",
       Amenities: "",
       LeaseTerms: "",
-      AvailabiltyDate: "",
+      AvailabilityDate: "",
       SecurityDeposit: "",
       YearBuilt: "",
       AvailableAs: "",
@@ -181,7 +181,10 @@ class HomeDescription extends React.Component {
     console.log(data);
     let y;
     var add, del;
-    if (localStorage.getItem("_id") === data.OwnerID) {
+    if (
+      localStorage.getItem("_id") === data.OwnerID ||
+      localStorage.getItem("_id") === data.RealtorID
+    ) {
       add = (
         <NavDropdown title="... More" style={{ float: "right" }}>
           <NavDropdown.Item
