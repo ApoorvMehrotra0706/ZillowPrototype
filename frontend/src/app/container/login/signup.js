@@ -96,6 +96,7 @@ class SignUp extends React.Component {
                   <Form.Label>User Type</Form.Label>
                   <Form.Control
                     as="select"
+                    defaultValue="Seller"
                     onChange={(e) => this.setState({ Role: e.target.value })}
                   >
                     <option>Seller</option>
