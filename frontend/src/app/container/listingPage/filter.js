@@ -25,6 +25,7 @@ class ListingPage extends React.Component {
       Parking: "Closed",
       YearBuilt: "",
       AvailableAs: "",
+      SearchName: "",
     };
   }
 
@@ -79,6 +80,7 @@ class ListingPage extends React.Component {
       HomeType: this.state.HomeType,
       Parking: this.state.Parking,
       YearBuilt: this.state.YearBuilt,
+      SearchName: this.state.SearchName,
     };
     if (
       localStorage.getItem("role") == "Seller" ||
@@ -224,6 +226,17 @@ class ListingPage extends React.Component {
               value={this.state.YearBuilt}
               onChange={(e) => {
                 this.setState({ YearBuilt: Number(e.target.value) });
+              }}
+            />
+          </Form.Group>
+          <Form.Group controlId="exampleForm.ControlInput7">
+            <Form.Label>Search Name</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Year"
+              value={this.state.SearchName}
+              onChange={(e) => {
+                this.setState({ SearchName: Number(e.target.value) });
               }}
             />
           </Form.Group>
