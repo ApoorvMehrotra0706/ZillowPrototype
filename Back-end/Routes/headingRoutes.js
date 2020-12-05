@@ -38,7 +38,7 @@ const mult = multer({
   }),
 });
 
-const imageUpload = mult.array('multfiles');
+const imageUpload = mult.array('file');
 
 const uploadFile = async (req, res) => {
   try {

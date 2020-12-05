@@ -291,7 +291,11 @@ class HomeDescription extends React.Component {
                   width: "100%",
                   marginBottom: "30px",
                 }}
-                src="/home.jpg"
+                src={
+                  data.ImageURL && data.ImageURL.length > 0
+                    ? data.ImageURL[0]
+                    : "/home.jpg"
+                }
               />
               <Row>
                 <Col md="6">
@@ -300,7 +304,11 @@ class HomeDescription extends React.Component {
                       objectFit: "cover",
                       width: "100%",
                     }}
-                    src="/home.jpg"
+                    src={
+                      data.ImageURL && data.ImageURL.length > 1
+                        ? data.ImageURL[1]
+                        : "/home.jpg"
+                    }
                   />
                 </Col>
                 <Col md="6">
@@ -309,7 +317,11 @@ class HomeDescription extends React.Component {
                       objectFit: "cover",
                       width: "100%",
                     }}
-                    src="/home.jpg"
+                    src={
+                      data.ImageURL && data.ImageURL.length > 2
+                        ? data.ImageURL[2]
+                        : "/home.jpg"
+                    }
                   />
                 </Col>
                 {/* <div style={{ margin: "0 auto" }}>

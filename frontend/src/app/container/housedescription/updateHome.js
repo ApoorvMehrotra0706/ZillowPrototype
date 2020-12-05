@@ -31,6 +31,7 @@ class AddHome extends React.Component {
       OpenHouse: "",
       Error: "",
       AvailableAs: 1,
+      ImageURL: [],
     };
   }
 
@@ -56,6 +57,7 @@ class AddHome extends React.Component {
         YearBuilt: data.YearBuilt,
         AvailableAs: data.AvailableAs,
         OpenHouse: data.OpenHouse,
+        ImageURL: data.ImageURL,
       });
   }
 
@@ -82,6 +84,7 @@ class AddHome extends React.Component {
           YearBuilt: data.YearBuilt,
           AvailableAs: data.AvailableAs,
           OpenHouse: data.OpenHouse,
+          ImageURL: data.ImageURL,
         });
     }
   }
@@ -89,9 +92,33 @@ class AddHome extends React.Component {
   handleFile(e) {
     //console.log(e.target.files);
     const fd = new FormData();
-    for (let i = 0; i <= e.target.files.length; i++) {
-      fd.append("file" + i, this.state.file[i]);
+    for (let i = 0; i < e.target.files.length; i++) {
+      debugger;
+      fd.append("file", e.target.files[i], e.target.files[i].name);
     }
+    debugger;
+    axios({
+      method: "post",
+      url: configPath.api_host + "/housing/uploadImage",
+      data: fd,
+      headers: { "Content-Type": "multipart/form-data" },
+    })
+      .then((response) => {
+        debugger;
+        if (response.status === 200) {
+          this.setState({
+            ImageURL: this.state.ImageURL.concat(response.data),
+          });
+        } else if (parseInt(response.status) === 400) {
+        }
+      })
+      .catch((error) => {
+        this.setState({
+          errorMsg: error.message,
+          authFlag: false,
+        });
+      });
+
     // this.setState({ file: e.target.files });
   }
 
@@ -153,7 +180,7 @@ class AddHome extends React.Component {
         ListingID: this.props.get_listing[0]._id,
       };
       let data = {
-        OwnerID: localStorage.getItem("_id"),
+        // OwnerID: localStorage.getItem("_id"),
         _id: this.props.get_listing[0]._id,
         ZIP,
         StreetAddress: this.state.StreetAddress,
@@ -174,6 +201,7 @@ class AddHome extends React.Component {
         YearBuilt,
         AvailableAs: this.state.AvailableAs,
         OpenHouse: this.state.OpenHouse,
+        ImageURL: this.state.ImageURL,
       };
       // for (let i = 0; i <= this.state.file.length; i++) {
       //   fd.append("file" + i, this.state.file[i]);

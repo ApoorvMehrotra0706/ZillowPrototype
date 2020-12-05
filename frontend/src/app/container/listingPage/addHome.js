@@ -51,8 +51,6 @@ class AddHome extends React.Component {
       .then((response) => {
         debugger;
         if (response.status === 200) {
-          const imageUrl = response.data;
-
           this.setState({
             ImageURL: this.state.ImageURL.concat(response.data),
           });
@@ -139,7 +137,7 @@ class AddHome extends React.Component {
         LeaseTerms: this.state.LeaseTerms,
         AvailabilityDate: this.state.AvailabilityDate,
         SecurityDeposit: this.state.SecurityDeposit,
-
+        ImageURL: this.state.ImageURL,
         YearBuilt,
         AvailableAs: this.state.AvailableAs,
         OpenHouse: this.state.OpenHouse,

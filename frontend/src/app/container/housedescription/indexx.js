@@ -224,7 +224,13 @@ class HomeDescription extends React.Component {
         <Container fluid style={{ marginTop: "20px" }}>
           <Row>
             <Col md="6">
-              <Image src="/home.jpg" />
+              <Image
+                src={
+                  data.ImageURL && data.ImageURL.length > 0
+                    ? data.ImageURL[0]
+                    : "/home.jpg"
+                }
+              />
               <div style={{ margin: "0 auto" }}>
                 <Button variant="primary" onClick={this.addHome}>
                   Add to Favorite

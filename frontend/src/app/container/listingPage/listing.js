@@ -58,12 +58,18 @@ class List extends React.Component {
           NoOfBathrooms,
           Area,
           Price,
+          ImageURL,
         }) => {
           var lk = "/housedescription/" + _id;
           return (
             <Col xl={3}>
               <Card key={_id} className="card-style-1">
-                <Card.Img variant="top" src="/home.jpg" />
+                <Card.Img
+                  variant="top"
+                  src={
+                    ImageURL && ImageURL.length > 0 ? ImageURL[0] : "/home.jpg"
+                  }
+                />
                 <Link to={lk}>
                   <Card.Body>
                     <Card.Title>
