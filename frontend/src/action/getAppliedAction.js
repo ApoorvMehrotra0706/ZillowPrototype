@@ -21,8 +21,18 @@ export const search1 = (payload) => {
       "IDToken"
     );
     //make a post request with the user data
+    let link;
+    if (localStorage.getItem("role") == "Realtor") {
+      link = "/realtor/getApplications";
+    }
+    if (localStorage.getItem("role") == "Landlord") {
+      link = "/landlord/getApplications";
+    }
+    if (localStorage.getItem("role") == "Seller") {
+      link = "/seller/getApplications";
+    }
     axios
-      .get(configPath.api_host + "/housing/getListingByID", { params: payload })
+      .get(configPath.api_host + link, { params: payload })
       .then((response) => {
         if (response.status === 200) {
           console.log(response.data);
