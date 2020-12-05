@@ -14,9 +14,9 @@ Develop a web application that lets users buy, sell or rent homes(Something like
 
 ## Design Decisions
 #### Part 1: Selection of Tech-Stack
-1.	Why MongoDB?
-2.	Why NodeJS?
-3.	Why LoadBalancer and AWS?
+1.	MongoDB has been used as the database, considering the read centricity of the data. It supports storing the objects as nested documents. It is highly scalable.
+2.	NodeJS has been used at the backend. It has fast processing and seamless JSON support which helped in building up the smooth classes and interaction between them. The object destructing property 
+3.	To make the application fault tolerant, LoadBalancer is used and the entire project has been deployed on AWS facilitating making it a SaaS serivce.
 4.	To allow us to create lightweight and dynamic web pages, ReactJS was used in the Frontend. It allowed us to build interactive components like modals, which improved user experience.
 5.	Redux ensured consistent behavior throughout the application as a state container and manager. Redux resulted in easy testing and smooth state transitions.
 
@@ -27,11 +27,11 @@ Develop a web application that lets users buy, sell or rent homes(Something like
 
 
 #### Part 3: Backend Design Decisions
-1. 
-2.
-3.
+1. NodeJS allowed the seamless JSON support that helped in esy accessibility of objects and its attributes. The object destructuring allowed the resuability of the code.
+2. Factory design pattern has been implemented that red-directed the flow towards the respetive persona classes.
+3. Due care has been taken to keep the code modular and resuable as much as possible.
 
-## Technology Stack
+## Technology Stack (MERN stack)
 * React.js and redux for Frontend
 * Node.js for Backend
 * MongoDB to store and retrieve the persistent data
