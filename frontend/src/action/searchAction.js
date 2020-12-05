@@ -1,53 +1,45 @@
-import { REGISTER } from "./actionTypes";
+import { SEARCH } from "./actionTypes";
 import configPath from "../config";
 import axios from "axios";
 
-//Customer Register Dispatacher
-const registerCustomerDispatcher = (payload) => {
+const searchDispatcher = (payload) => {
   console.log("Inside registerCustomerDispatcher action");
   console.log("payload", payload);
   return {
-    type: REGISTER,
-    payload,
-  };
-};
-
-//refresh flags
-export const refreshFlags = (payload) => {
-  return {
-    type: "REFRESHFLAGS",
+    type: SEARCH,
     payload,
   };
 };
 
 //Delayed dispatch to make async call for Customer data
-export const registerCustomer = (payload) => {
+export const search = (payload) => {
   console.log("Inside registerCustomer thunk");
-
   return (dispatch) => {
     //set the with credentials to true
-    axios.defaults.withCredentials = true;
+    axios.defaults.headers.common.authorization = localStorage.getItem(
+      "IDToken"
+    );
     //make a post request with the user data
     axios
-      .post(configPath.api_host + "/housing/signup", payload)
+      .get(configPath.api_host + "/housing/searchListing", { params: payload })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
-          dispatch(
-            registerCustomerDispatcher({
-              ...response.data,
-              registerFlag: true,
-            })
-          );
+          console.log(response.data);
+          dispatch(searchDispatcher(response.data));
         } else {
-          alert(response)
+          dispatch(searchDispatcher(response.data));
         }
       })
       .catch((error) => {
         if (error.response) {
           console.log(error.response.data);
+          dispatch(searchDispatcher(error.response.data));
         } else {
-          alert("Invalid Input")
+          dispatch(
+            searchDispatcher({
+              res: "Network error",
+            })
+          );
         }
       });
   };

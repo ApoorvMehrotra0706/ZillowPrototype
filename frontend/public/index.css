@@ -42,3 +42,7 @@ span.housecard-right {
 .dropdown-menu {
   margin-left: -90px !important;
 }
+
+.adDropdown:active {
+  background-color: #f8f9fa !important;
+}

@@ -20,6 +20,9 @@ class customerInfo extends React.Component {
     }
 
     changeStatus = (e) => {
+        this.setState({
+            status: e.target.value
+        })
         let payload = {
             Status: e.target.value
         }
@@ -58,7 +61,7 @@ class customerInfo extends React.Component {
                 <td>{EmailID}</td>
                 <td>{Role}</td>
                 <td>
-                    <Form.Control as="select" defaultValue={Status} onChange={(e) => {this.changeUserStatus(e, EmailID, Role)}}>
+                    <Form.Control as="select" value={Status} onChange={(e) => {this.changeUserStatus(e, EmailID, Role)}}>
                         <option>Pending</option>
                         <option>Accepted</option>
                     </Form.Control>
@@ -71,7 +74,7 @@ class customerInfo extends React.Component {
                 <Col lg={2}>
                     <Form.Group controlId="exampleForm.ControlSelect1">
                         <Form.Label>Status</Form.Label>
-                        <Form.Control as="select" default="All" onChange={this.changeStatus}>
+                        <Form.Control as="select" value={this.state.status} onChange={this.changeStatus}>
                             <option>All</option>
                             <option>Accepted</option>
                             <option>Pending</option>
