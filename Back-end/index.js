@@ -67,6 +67,11 @@ mongoose.connect(mongoDB, options, (err, res) => {
   }
 });
 
+app.get('/ping', (req, res) => {
+  res.json({
+    message: 'Ping API Alive',
+  });
+});
 app.use('/housing', commonPart);
 
 app.use('/admin', admin);
