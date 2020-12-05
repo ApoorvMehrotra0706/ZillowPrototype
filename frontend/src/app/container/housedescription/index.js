@@ -179,6 +179,7 @@ class HomeDescription extends React.Component {
         NoOfBathrooms: x.NoOfBathrooms,
         State: x.State,
         Area: x.Area,
+        ImageURL: x.ImageURL,
       },
     };
     axios.defaults.headers.common.authorization = localStorage.getItem(
@@ -237,6 +238,11 @@ class HomeDescription extends React.Component {
           </NavDropdown.Item>
         </NavDropdown>
       );
+      y = (
+        <Button onClick={this.handleShowApplied}>
+          <HiOutlineCursorClick /> Applied Users
+        </Button>
+      );
     }
     let x = <div>loading....</div>;
     console.log(data);
@@ -257,12 +263,6 @@ class HomeDescription extends React.Component {
             <HiOutlineCursorClick /> Apply
           </Button>
         );
-      else
-        y = (
-          <Button onClick={this.handleShowApplied}>
-            <HiOutlineCursorClick /> Applied Users
-          </Button>
-        );
       lease = (
         <div>
           {" "}
@@ -271,12 +271,6 @@ class HomeDescription extends React.Component {
           </h4>
           <p>{data.LeaseTerms}</p>
         </div>
-      );
-    } else {
-      y = (
-        <Button onClick={this.handleShowApplied}>
-          <HiOutlineCursorClick /> Applied Users
-        </Button>
       );
     }
 

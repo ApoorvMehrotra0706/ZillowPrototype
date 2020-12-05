@@ -69,6 +69,10 @@ class List extends React.Component {
                   src={
                     ImageURL && ImageURL.length > 0 ? ImageURL[0] : "/home.jpg"
                   }
+                  style={{
+                    height: 178,
+                    width: 268,
+                  }}
                 />
                 <Link to={lk}>
                   <Card.Body>

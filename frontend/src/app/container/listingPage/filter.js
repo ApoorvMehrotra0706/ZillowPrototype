@@ -12,8 +12,8 @@ class ListingPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      Price: [0, 5000000],
-      Area: [0, 10000],
+      Price: 50000,
+      Area: 1000,
       ZIP: "",
       StreetAddress: "",
       NoOfBedroom: 1,
@@ -32,10 +32,10 @@ class ListingPage extends React.Component {
     var data = {
       UserID: localStorage.getItem("_id"),
       FavouriteSearches: {
-        PriceStartRange: this.state.Price[0],
-        PriceEndRange: this.state.Price[1],
-        MinArea: this.state.Area[0],
-        MaxArea: this.state.Area[1],
+        PriceStartRange: 0,
+        PriceEndRange: this.state.Price,
+        MinArea: 0,
+        MaxArea: this.state.Area,
         ZIP: this.state.ZIP,
         StreetAddress: this.state.StreetAddress,
         NoOfBedrooms: this.state.NoOfBedroom,
@@ -66,10 +66,10 @@ class ListingPage extends React.Component {
 
   applyFilter = () => {
     var payload = {
-      MinPrice: this.state.Price[0],
-      MaxPrice: this.state.Price[1],
-      MinArea: this.state.Area[0],
-      MaxArea: this.state.Area[1],
+      MinPrice: 0,
+      MaxPrice: this.state.Price,
+      MinArea: 0,
+      MaxArea: this.state.Area,
       ZIP: this.state.ZIP,
       StreetAddress: this.state.StreetAddress,
       NoOfBedrooms: this.state.NoOfBedroom,
@@ -130,6 +130,32 @@ class ListingPage extends React.Component {
             }}
           />
         </Form.Group>
+        <Form>
+          <Form.Group controlId="formBasicRange">
+            <Form.Label>Price - 0 to {this.state.Price}</Form.Label>
+            <Form.Control
+              type="range"
+              value={this.state.Price}
+              onChange={(e) => {
+                this.setState({ Price: e.target.value });
+              }}
+              max={5000000}
+            />
+          </Form.Group>
+        </Form>
+        <Form>
+          <Form.Group controlId="formBasicRange">
+            <Form.Label>Area - 0 to {this.state.Area}</Form.Label>
+            <Form.Control
+              type="range"
+              value={this.state.Area}
+              onChange={(e) => {
+                this.setState({ Area: e.target.value });
+              }}
+              max={10000}
+            />
+          </Form.Group>
+        </Form>
         <Form.Group controlId="formGridBed">
           <Form.Label>Bedroom</Form.Label>
           <Form.Control

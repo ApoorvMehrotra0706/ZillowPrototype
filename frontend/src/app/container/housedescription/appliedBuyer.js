@@ -63,6 +63,7 @@ class AppliedBuyer extends React.Component {
         if (response.status === 201) {
           this.props.dispatch(search1(payload));
           alert("Status updated");
+          window.location.reload(false);
         }
       })
       .catch((error) => {

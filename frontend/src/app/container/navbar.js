@@ -71,7 +71,7 @@ class Topnav extends React.Component {
         {redirect}
         <Navbar>
           <div className="logo">
-            <Navbar.Brand href="#home">
+            <Navbar.Brand>
               <Link to="/houseListing">
                 <img
                   src="/logo.png"

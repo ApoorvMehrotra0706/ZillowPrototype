@@ -1,8 +1,7 @@
 import React from "react";
 import { CardDeck, Card, Col } from "react-bootstrap";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { search } from "../../../action/searchAction";
 import { search1 } from "../../../action/favSearchAction";
 
 class List extends React.Component {
