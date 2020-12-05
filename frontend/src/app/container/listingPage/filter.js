@@ -233,10 +233,10 @@ class ListingPage extends React.Component {
             <Form.Label>Search Name</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Year"
+              placeholder="Enter search name"
               value={this.state.SearchName}
               onChange={(e) => {
-                this.setState({ SearchName: Number(e.target.value) });
+                this.setState({ SearchName: e.target.value });
               }}
             />
           </Form.Group>
