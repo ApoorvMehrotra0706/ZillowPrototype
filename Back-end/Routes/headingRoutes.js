@@ -15,6 +15,8 @@ const {
   staticInsert,
 } = require('../Common/SharedFunctionalities');
 
+const Listing = require('../Users/ListingPosters');
+
 const { BUCKET_NAME } = process.env;
 const s3Storage = new AWS.S3({
   accessKeyId: process.env.ACCESSKEYID,
@@ -137,6 +139,12 @@ Router.get('/searchListing', async (req, res) => {
 
 Router.get('/uploadImage', async (req, res) => {
   const value = await uploadFile(req, res);
+  return value;
+});
+
+Router.get('/getListingByID', async (req, res) => {
+  const listingObj = new Listing();
+  const value = await listingObj.getListingByID(req, res);
   return value;
 });
 module.exports = Router;

@@ -34,7 +34,7 @@ Router.get('/getListing', validateUser, async (req, res) => {
   return results;
 });
 
-Router.delete('/deleteListing', validateUser, async (req, res) => {
+Router.post('/deleteListing', validateUser, async (req, res) => {
   console.log('Delete Listing');
   const { OwnerID, ListingID } = req.body;
   let results = null;

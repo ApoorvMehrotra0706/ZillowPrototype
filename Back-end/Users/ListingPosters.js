@@ -35,6 +35,7 @@ class ListingPosters extends User {
 
   updateListing(listing, response) {
     try {
+      console.log(listing);
       const filter = [{ _id: listing._id }];
       if (listing.OwnerID && listing.OwnerID.length > 0) {
         filter.push({ OwnerID: listing.OwnerID });
@@ -77,6 +78,31 @@ class ListingPosters extends User {
             'Content-Type': 'text/plain',
           });
           response.end(JSON.stringify(listings));
+        }
+      });
+    } catch (error) {
+      response.writeHead(500, {
+        'Content-Type': 'text/plain',
+      });
+      response.end('Network error');
+    }
+    return response;
+  }
+
+  getListingByID(req, response) {
+    try {
+      const { ListingID } = req.query;
+      Listing.find({ _id: ListingID }, async (error, listing) => {
+        if (error) {
+          response.writeHead(500, {
+            'Content-Type': 'text/plain',
+          });
+          response.end('Network Error');
+        } else {
+          response.writeHead(200, {
+            'Content-Type': 'text/plain',
+          });
+          response.end(JSON.stringify(listing));
         }
       });
     } catch (error) {

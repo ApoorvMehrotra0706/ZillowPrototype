@@ -176,70 +176,93 @@ class User {
         AvailableAs,
       } = req.query;
       const filterArray = [];
-      if (ZIP.length !== 0) {
+
+      if (ZIP !== undefined && ZIP !== null && ZIP.length !== 0) {
         filterArray.push({ ZIP: ZIP });
       }
-      if (StreetAddress.length !== 0) {
+      if (StreetAddress !== undefined && StreetAddress !== null && StreetAddress.length !== 0) {
         filterArray.push({ StreetAddress: { $regex: `${StreetAddress}`, $options: 'i' } });
       }
-      if (State.length !== 0) {
+      if (State !== undefined && State !== null && State.length !== 0) {
         filterArray.push({ State: State });
       }
-      if (Country.length !== 0) {
+      if (Country !== undefined && Country !== null && Country.length !== 0) {
         filterArray.push({ Country: Country });
       }
-      if (MinArea.length !== 0) {
+      if (MinArea !== undefined && MinArea !== null && MinArea.length !== 0) {
         filterArray.push({ Area: { $gt: MinArea } });
       }
-      if (MaxArea.length !== 0) {
+      if (MaxArea !== undefined && MaxArea !== null && MaxArea.length !== 0) {
         filterArray.push({ Area: { $lt: MaxArea } });
       }
-      if (MinPrice.length !== 0) {
+      if (MinPrice !== undefined && MinPrice !== null && MinPrice.length !== 0) {
         filterArray.push({ Price: { $gt: MinPrice } });
       }
-      if (MaxPrice.length !== 0) {
+      if (MaxPrice !== undefined && MaxPrice !== null && MaxPrice.length !== 0) {
         filterArray.push({ Price: { $lt: MaxPrice } });
       }
-      if (NoOfBedrooms.length !== 0) {
+      if (NoOfBedrooms !== undefined && NoOfBedrooms !== null && NoOfBedrooms.length !== 0) {
         filterArray.push({ NoOfBedrooms: NoOfBedrooms });
       }
-      if (NoOfBathrooms.length !== 0) {
+      if (NoOfBathrooms !== undefined && NoOfBathrooms !== null && NoOfBathrooms.length !== 0) {
         filterArray.push({ NoOfBathrooms: NoOfBathrooms });
       }
-      if (FlooringType.length !== 0) {
+      if (FlooringType !== undefined && FlooringType !== null && FlooringType.length !== 0) {
         filterArray.push({ FlooringType: FlooringType });
       }
-      if (HomeType.length !== 0) {
+      if (HomeType !== undefined && HomeType !== null && HomeType.length !== 0) {
         filterArray.push({ HomeType: HomeType });
       }
-      if (Parking.length !== 0) {
+      if (Parking !== undefined && Parking !== null && Parking.length !== 0) {
         filterArray.push({ Parking: Parking });
       }
-      if (YearBuilt.length !== 0) {
+      if (YearBuilt !== undefined && YearBuilt !== null && YearBuilt.length !== 0) {
         filterArray.push({ YearBuilt: YearBuilt });
       }
-      if (AvailableAs.length !== 0) {
+      if (AvailableAs !== undefined && AvailableAs !== null && AvailableAs.length !== 0) {
         filterArray.push({ AvailableAs: AvailableAs });
       }
-      Listings.find({ $and: filterArray }, async (err, result) => {
-        if (err) {
-          res.writeHead(500, {
-            'Content-Type': 'text/plain',
-          });
-          res.end('Network error');
-        }
-        if (result) {
-          res.writeHead(200, {
-            'Content-Type': 'text/plain',
-          });
-          res.end(JSON.stringify(result));
-        } else {
-          res.writeHead(400, {
-            'Content-Type': 'text/plain',
-          });
-          res.end('Not found');
-        }
-      });
+      if (filterArray.length === 0) {
+        Listings.find({}, async (err, result) => {
+          if (err) {
+            res.writeHead(500, {
+              'Content-Type': 'text/plain',
+            });
+            res.end('Network error');
+          }
+          if (result) {
+            res.writeHead(200, {
+              'Content-Type': 'text/plain',
+            });
+            res.end(JSON.stringify(result));
+          } else {
+            res.writeHead(400, {
+              'Content-Type': 'text/plain',
+            });
+            res.end('Not found');
+          }
+        });
+      } else {
+        Listings.find({ $and: filterArray }, async (err, result) => {
+          if (err) {
+            res.writeHead(500, {
+              'Content-Type': 'text/plain',
+            });
+            res.end('Network error');
+          }
+          if (result) {
+            res.writeHead(200, {
+              'Content-Type': 'text/plain',
+            });
+            res.end(JSON.stringify(result));
+          } else {
+            res.writeHead(400, {
+              'Content-Type': 'text/plain',
+            });
+            res.end('Not found');
+          }
+        });
+      }
     } catch (error) {
       res.writeHead(500, {
         'Content-Type': 'text/plain',
@@ -247,8 +270,6 @@ class User {
       res.end('Network error');
     }
   }
-
-  // getUserDetail(req, res) {}
 }
 
 module.exports = User;
