@@ -62,6 +62,11 @@ Project Task Board: https://github.com/gopinathsjsu/fa20-cmpe-202-sec-02-team-pr
 
 Backend: 
 
+Contains code developed in NodeJS developed with Visual Studio Code IDE. It establishes connection with MongoDB for CRUD operations. The index.js contains the routes for the different personas that incude the separate path for common, admin, realtor, landlord, seller, buyer, renter. The package.json file contains the dependencies needed for the backend.  Frontend can be started by implementing the commands:
+
+npm -i\
+nodemon
+
 Frontend: 
 
 Contains code developed in ReactJS developed with Visual Studio Code IDE. The index.js contains the routes for the different components.  The package.json file contains the dependencies needed for the frontend.  Frontend can be started by implementing the commands:
