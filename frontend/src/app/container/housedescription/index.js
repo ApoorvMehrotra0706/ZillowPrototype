@@ -24,6 +24,8 @@ import configPath from "../../../config";
 import axios from "axios";
 import ApplyBuyer from "./applyBuyer";
 import ApplyRenter from "./applyRenter";
+import AppliedBuyer from "./appliedBuyer";
+import { Redirect } from "react-router-dom";
 
 class HomeDescription extends React.Component {
   constructor(props) {
@@ -31,7 +33,7 @@ class HomeDescription extends React.Component {
     this.state = {
       showApplyBuyer: false,
       showApplyRenter: false,
-
+      showApplied: false,
       show: false,
       ZIP: "",
       StreetAddress: "",
@@ -51,6 +53,7 @@ class HomeDescription extends React.Component {
       YearBuilt: "",
       AvailableAs: "",
       OpenHouse: "",
+      success: false,
     };
   }
 
@@ -61,6 +64,18 @@ class HomeDescription extends React.Component {
     console.log(payload);
     this.props.dispatch(search1(payload));
   }
+
+  handleCloseApplied = () => {
+    this.setState({
+      showApplied: false,
+    });
+  };
+
+  handleShowApplied = () => {
+    this.setState({
+      showApplied: true,
+    });
+  };
 
   handleCloseApplyBuyer = () => {
     this.setState({
@@ -100,15 +115,27 @@ class HomeDescription extends React.Component {
 
   deleteHome = () => {
     let data = {
-      OwnerID: localStorage.getItem("_id"),
       ListingID: this.props.get_listing[0]._id,
     };
+    let link;
     axios.defaults.headers.common.authorization = localStorage.getItem(
       "IDToken"
     );
+    if (localStorage.getItem("role") == "Realtor") {
+      data["RealtorID"] = localStorage.getItem("_id");
+      link = "/realtor/deleteListing";
+    }
+    if (localStorage.getItem("role") == "Landlord") {
+      data["OwnerID"] = localStorage.getItem("_id");
+      link = "/landlord/deleteListing";
+    }
+    if (localStorage.getItem("role") == "Seller") {
+      data["OwnerID"] = localStorage.getItem("_id");
+      link = "/seller/deleteListing";
+    }
     console.log(data);
     axios
-      .post(configPath.api_host + `/seller/deleteListing`, data)
+      .post(configPath.api_host + link, data)
       .then((response) => {
         console.log("Status Code : ", response.status);
         if (response.status === 200) {
@@ -128,6 +155,9 @@ class HomeDescription extends React.Component {
             YearBuilt: "",
           };
           this.props.dispatch(search(payload));
+          this.setState({
+            success: true,
+          });
           alert("Successfully Deleted");
         }
       })
@@ -173,6 +203,9 @@ class HomeDescription extends React.Component {
   render() {
     console.log(this.props.match.params.id);
     var data;
+    if (this.state.success === true) {
+      <Redirect to="/houseListing" />;
+    }
     if (this.props.get_listing[0]) {
       data = this.props.get_listing[0];
     } else {
@@ -224,6 +257,12 @@ class HomeDescription extends React.Component {
             <HiOutlineCursorClick /> Apply
           </Button>
         );
+      else
+        y = (
+          <Button onClick={this.handleShowApplied}>
+            <HiOutlineCursorClick /> Applied Users
+          </Button>
+        );
       lease = (
         <div>
           {" "}
@@ -232,6 +271,12 @@ class HomeDescription extends React.Component {
           </h4>
           <p>{data.LeaseTerms}</p>
         </div>
+      );
+    } else {
+      y = (
+        <Button onClick={this.handleShowApplied}>
+          <HiOutlineCursorClick /> Applied Users
+        </Button>
       );
     }
 
@@ -403,6 +448,11 @@ class HomeDescription extends React.Component {
 
               {/* {add}
               {del} */}
+              <AppliedBuyer
+                show={this.state.showApplied}
+                handleClose={this.handleCloseApplied}
+                homeID={this.props.match.params.id}
+              />
               <UpdateHome
                 show={this.state.show}
                 handleClose={this.handleClose}
