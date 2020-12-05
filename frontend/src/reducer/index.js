@@ -5,6 +5,7 @@ import admin from "./admin";
 import favHomes from "./favHomes";
 import favSearch from "./favSearch";
 import myHomes from "./myHomes";
+import applied from "./applications";
 
 const allReducers = combineReducers({
   loginRegister,
@@ -13,6 +14,7 @@ const allReducers = combineReducers({
   favHomes,
   myHomes,
   favSearch,
+  applied,
 });
 
 export default allReducers;

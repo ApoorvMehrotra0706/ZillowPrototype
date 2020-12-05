@@ -18,19 +18,55 @@ class AddHome extends React.Component {
       NoOfBedrooms: "",
       NoOfBathrooms: "",
       FlooringType: "",
+      OwnerEmail: "",
       HomeType: "",
       Parking: "",
       Amenities: "",
       LeaseTerms: "",
-      AvailabiltyDate: "",
+      AvailabilityDate: "",
       SecurityDeposit: "",
       YearBuilt: "",
-      AvailableAs: "",
       OpenHouse: "",
       Error: "",
       Email: "",
       AvailableAs: 1,
+      ImageURL: [],
     };
+  }
+
+  handleFile(e) {
+    //console.log(e.target.files);
+    const fd = new FormData();
+    for (let i = 0; i < e.target.files.length; i++) {
+      debugger;
+      fd.append("file", e.target.files[i], e.target.files[i].name);
+    }
+    debugger;
+    axios({
+      method: "post",
+      url: configPath.api_host + "/housing/uploadImage",
+      data: fd,
+      headers: { "Content-Type": "multipart/form-data" },
+    })
+      .then((response) => {
+        debugger;
+        if (response.status === 200) {
+          const imageUrl = response.data;
+
+          this.setState({
+            ImageURL: this.state.ImageURL.concat(response.data),
+          });
+        } else if (parseInt(response.status) === 400) {
+        }
+      })
+      .catch((error) => {
+        this.setState({
+          errorMsg: error.message,
+          authFlag: false,
+        });
+      });
+
+    // this.setState({ file: e.target.files });
   }
 
   editProfileHandlerSubmit = () => {
@@ -101,8 +137,9 @@ class AddHome extends React.Component {
         Parking: this.state.Parking,
         Amenities: this.state.Amenities,
         LeaseTerms: this.state.LeaseTerms,
-        AvailabiltyDate: this.state.AvailabiltyDate,
+        AvailabilityDate: this.state.AvailabilityDate,
         SecurityDeposit: this.state.SecurityDeposit,
+
         YearBuilt,
         AvailableAs: this.state.AvailableAs,
         OpenHouse: this.state.OpenHouse,
@@ -112,6 +149,7 @@ class AddHome extends React.Component {
       if (localStorage.getItem("role") == "Realtor") {
         data["RealtorID"] = localStorage.getItem("_id");
         data["RealtorName"] = localStorage.getItem("name");
+        data["OwnerEmail"] = this.state.OwnerEmail;
         link = "/realtor/addListing";
       } else {
         data["OwnerEmail"] = localStorage.getItem("emailID");
@@ -189,20 +227,33 @@ class AddHome extends React.Component {
     }
     if (localStorage.getItem("role") == "Realtor") {
       realtor = (
-        <Form.Group controlId="formGridBed">
-          <Form.Label>AvailableAs</Form.Label>
-          <Form.Control
-            as="select"
-            defaultValue="2"
-            value={this.state.AvailableAs}
-            onChange={(e) => {
-              this.setState({ AvailableAs: e.target.value });
-            }}
-          >
-            <option value={1}>Sell</option>
-            <option value={2}>Rent</option>
-          </Form.Control>
-        </Form.Group>
+        <div>
+          <Form.Group controlId="formGridBed">
+            <Form.Label>AvailableAs</Form.Label>
+            <Form.Control
+              as="select"
+              defaultValue="2"
+              value={this.state.AvailableAs}
+              onChange={(e) => {
+                this.setState({ AvailableAs: e.target.value });
+              }}
+            >
+              <option value={1}>Sell</option>
+              <option value={2}>Rent</option>
+            </Form.Control>
+          </Form.Group>
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Owner Email</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter Email"
+              value={this.state.OwnerEmail}
+              onChange={(e) => {
+                this.setState({ OwnerEmail: e.target.value });
+              }}
+            />
+          </Form.Group>
+        </div>
       );
     }
     return (
@@ -392,9 +443,9 @@ class AddHome extends React.Component {
               <Form.Control
                 type="Date"
                 placeholder="Enter Date"
-                value={this.state.AvailabiltyDate}
+                value={this.state.AvailabilityDate}
                 onChange={(e) => {
-                  this.setState({ AvailabiltyDate: e.target.value });
+                  this.setState({ AvailabilityDate: e.target.value });
                 }}
               />
             </Form.Group>
@@ -423,8 +474,16 @@ class AddHome extends React.Component {
               />
             </Form.Group>
             {realtor}
-            <Form.Group>
-              <Form.File id="exampleFormControlFile1" label="Insert Image" />
+            <Form.Group controlId="formPrice">
+              <Form.Label>Upload</Form.Label>
+              <Form.Control
+                type="file"
+                multiple
+                onChange={(e) => this.handleFile(e)}
+              />
+              <Form.Text style={{ color: "red" }}>
+                {this.state.fileError}
+              </Form.Text>
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>

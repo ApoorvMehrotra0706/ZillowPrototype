@@ -32,7 +32,7 @@ Router.get('/getListing', validateUser, async (req, res) => {
   return results;
 });
 
-Router.delete('/deleteListing', validateUser, async (req, res) => {
+Router.post('/deleteListing', validateUser, async (req, res) => {
   console.log('Delete Listing');
   const { RealtorID, ListingID } = req.body;
   let results = null;

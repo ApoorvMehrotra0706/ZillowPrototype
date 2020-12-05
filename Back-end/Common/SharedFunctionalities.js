@@ -73,13 +73,13 @@ const login = async (request, response) => {
           response.status(500).end('Error Occured');
         }
         if (user) {
-          if (user.Status) {
+          if (user.Status === 'Accepted') {
             if (await bcrypt.compare(request.body.Password, user.Password)) {
               const payload = {
                 _id: user._id,
                 userrole: user.Role,
                 email: user.EmailID,
-                name: user.Name
+                name: user.Name,
               };
               const token = jwt.sign(payload, process.env.SESSION_SECRET, {
                 expiresIn: 1008000,

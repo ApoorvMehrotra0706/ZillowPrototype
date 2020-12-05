@@ -18,7 +18,7 @@ const listingsSchema = new Schema(
     NoOfBedrooms: { type: Number },
     NoOfBathrooms: { type: Number },
     FlooringType: { type: String },
-    HomeType: {type: String,},
+    HomeType: { type: String },
     Parking: { type: String },
     Amenities: { type: String },
     LeaseTerms: { type: String },
