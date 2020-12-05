@@ -38,7 +38,7 @@ const mult = multer({
   }),
 });
 
-const imageUpload = mult.single('file');
+const imageUpload = mult.array('multfiles');
 
 const uploadFile = async (req, res) => {
   try {
@@ -51,7 +51,9 @@ const uploadFile = async (req, res) => {
         res.writeHead(200, {
           'Content-Type': 'text/plain',
         });
-        res.end(req.file.location);
+        const result = req.files.map((a) => a.location);
+        // res.end(req.file.location);
+        res.end(JSON.stringify(result));
       }
     });
   } catch (error) {
@@ -137,7 +139,7 @@ Router.get('/searchListing', async (req, res) => {
   return value;
 });
 
-Router.get('/uploadImage', async (req, res) => {
+Router.post('/uploadImage', async (req, res) => {
   const value = await uploadFile(req, res);
   return value;
 });

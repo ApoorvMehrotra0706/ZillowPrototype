@@ -24,7 +24,7 @@ class AddHome extends React.Component {
       Parking: "",
       Amenities: "",
       LeaseTerms: "",
-      AvailabiltyDate: "",
+      AvailabilityDate: "",
       SecurityDeposit: "",
       YearBuilt: "",
       AvailableAs: "",
@@ -51,7 +51,7 @@ class AddHome extends React.Component {
         Parking: data.Parking,
         Amenities: data.Amenities,
         LeaseTerms: data.LeaseTerms,
-        AvailabiltyDate: data.AvailabiltyDate,
+        AvailabilityDate: data.AvailabilityDate,
         SecurityDeposit: data.SecurityDeposit,
         YearBuilt: data.YearBuilt,
         AvailableAs: data.AvailableAs,
@@ -77,13 +77,22 @@ class AddHome extends React.Component {
           Parking: data.Parking,
           Amenities: data.Amenities,
           LeaseTerms: data.LeaseTerms,
-          AvailabiltyDate: data.AvailabiltyDate,
+          AvailabilityDate: data.AvailabilityDate,
           SecurityDeposit: data.SecurityDeposit,
           YearBuilt: data.YearBuilt,
           AvailableAs: data.AvailableAs,
           OpenHouse: data.OpenHouse,
         });
     }
+  }
+
+  handleFile(e) {
+    //console.log(e.target.files);
+    const fd = new FormData();
+    for (let i = 0; i <= e.target.files.length; i++) {
+      fd.append("file" + i, this.state.file[i]);
+    }
+    // this.setState({ file: e.target.files });
   }
 
   editProfileHandlerSubmit = () => {
@@ -160,7 +169,7 @@ class AddHome extends React.Component {
         Parking: this.state.Parking,
         Amenities: this.state.Amenities,
         LeaseTerms: this.state.LeaseTerms,
-        AvailabiltyDate: this.state.AvailabiltyDate,
+        AvailabilityDate: this.state.AvailabilityDate,
         SecurityDeposit: this.state.SecurityDeposit,
         YearBuilt,
         AvailableAs: this.state.AvailableAs,
@@ -441,9 +450,9 @@ class AddHome extends React.Component {
               <Form.Control
                 type="text"
                 placeholder="Enter Date"
-                value={this.state.AvailabiltyDate}
+                value={this.state.AvailabilityDate}
                 onChange={(e) => {
-                  this.setState({ AvailabiltyDate: e.target.value });
+                  this.setState({ AvailabilityDate: e.target.value });
                 }}
               />
             </Form.Group>
@@ -472,8 +481,16 @@ class AddHome extends React.Component {
               />
             </Form.Group>
             {realtor}
-            <Form.Group>
-              <Form.File id="exampleFormControlFile1" label="Insert Image" />
+            <Form.Group controlId="formPrice">
+              <Form.Label>Upload</Form.Label>
+              <Form.Control
+                type="file"
+                multiple
+                onChange={(e) => this.handleFile(e)}
+              />
+              <Form.Text style={{ color: "red" }}>
+                {this.state.fileError}
+              </Form.Text>
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>

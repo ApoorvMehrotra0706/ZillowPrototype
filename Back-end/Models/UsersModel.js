@@ -19,7 +19,7 @@ const userSchema = new Schema(
         Price: { type: Number },
         NoOfBedrooms: { type: Number },
         NoOfBathrooms: { type: Number },
-        Area: { type: Number }
+        Area: { type: Number },
       },
     ],
     FavouriteSearches: [
@@ -46,7 +46,7 @@ const userSchema = new Schema(
   { versionKey: false }
 );
 
-// userSignupSchema.index({ Email: 1, Role: 1 }, { unique: true });
+userSchema.index({ FavouriteHomes: 1 }, { unique: true });
 
 const UsersModel = mongoose.model('user', userSchema);
 module.exports = UsersModel;
