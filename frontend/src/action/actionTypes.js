@@ -1,0 +1,9 @@
+export const LOGIN = "LOGIN";
+export const LOGOUT = "LOGOUT";
+export const REGISTER = "REGISTER";
+export const SEARCH = "SEARCH";
+export const GET_LISTING = "GET_LISTING";
+export const ADMIN = "ADMIN";
+export const FAV_HOMES = "FAV_HOMES";
+export const MY_HOMES = "MY_HOMES";
+export const FAV_SEARCH = "FAV_SEARCH";

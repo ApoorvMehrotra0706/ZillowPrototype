@@ -73,12 +73,13 @@ const login = async (request, response) => {
           response.status(500).end('Error Occured');
         }
         if (user) {
-          if (user.Status === 'Accepted') {
+          if (user.Status) {
             if (await bcrypt.compare(request.body.Password, user.Password)) {
               const payload = {
                 _id: user._id,
                 userrole: user.Role,
                 email: user.EmailID,
+                name: user.Name
               };
               const token = jwt.sign(payload, process.env.SESSION_SECRET, {
                 expiresIn: 1008000,
@@ -119,6 +120,7 @@ const signup = async (req, res) => {
       { EmailID: req.body.emailID, Role: req.body.Role },
       async (error, result) => {
         if (error) {
+          console.log(1);
           res.writeHead(500, {
             'Content-Type': 'text/plain',
           });
@@ -140,6 +142,7 @@ const signup = async (req, res) => {
           // eslint-disable-next-line no-unused-vars
           signupUser.save((e, data) => {
             if (e) {
+              console.log(2);
               res.writeHead(500, {
                 'Content-Type': 'text/plain',
               });
@@ -149,6 +152,7 @@ const signup = async (req, res) => {
               // eslint-disable-next-line no-unused-vars
               user.save((e1, data1) => {
                 if (e1) {
+                  console.log(3);
                   res.writeHead(500, {
                     'Content-Type': 'text/plain',
                   });
