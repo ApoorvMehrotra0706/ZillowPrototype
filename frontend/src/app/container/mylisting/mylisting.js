@@ -36,7 +36,7 @@ class List extends React.Component {
           Area,
           Price,
         }) => {
-          var lk = "/housedescription/" + ListingID;
+          var lk = "/housedescription/" + _id;
           return (
             <Col xl={3}>
               <Card key={_id} className="card-style-1">

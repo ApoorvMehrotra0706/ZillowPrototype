@@ -32,7 +32,7 @@ class HomeDescription extends React.Component {
       Parking: "",
       Amenities: "",
       LeaseTerms: "",
-      AvailabiltyDate: "",
+      AvailabilityDate: "",
       SecurityDeposit: "",
       YearBuilt: "",
       AvailableAs: "",
