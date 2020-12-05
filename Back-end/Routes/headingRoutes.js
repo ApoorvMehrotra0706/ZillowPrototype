@@ -17,10 +17,10 @@ const {
 
 const Listing = require('../Users/ListingPosters');
 
-const { BUCKET_NAME } = process.env;
+const BUCKET_NAME = 'yelp-prototype-273-shim';
 const s3Storage = new AWS.S3({
-  accessKeyId: process.env.ACCESSKEYID,
-  secretAccessKey: process.env.SECRETACCESSKEY,
+  accessKeyId: 'AKIAJDDTMFE5VFNXVEHQ',
+  secretAccessKey: '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',
 });
 
 const mult = multer({
