@@ -179,6 +179,7 @@ class HomeDescription extends React.Component {
         NoOfBathrooms: x.NoOfBathrooms,
         State: x.State,
         Area: x.Area,
+        ImageURL: x.ImageURL,
       },
     };
     axios.defaults.headers.common.authorization = localStorage.getItem(
@@ -204,7 +205,7 @@ class HomeDescription extends React.Component {
     console.log(this.props.match.params.id);
     var data;
     if (this.state.success === true) {
-      <Redirect to="/houseListing" />;
+      return <Redirect to="/houseListing" />;
     }
     if (this.props.get_listing[0]) {
       data = this.props.get_listing[0];
@@ -237,6 +238,11 @@ class HomeDescription extends React.Component {
           </NavDropdown.Item>
         </NavDropdown>
       );
+      y = (
+        <Button onClick={this.handleShowApplied}>
+          <HiOutlineCursorClick /> Applied Users
+        </Button>
+      );
     }
     let x = <div>loading....</div>;
     console.log(data);
@@ -257,12 +263,6 @@ class HomeDescription extends React.Component {
             <HiOutlineCursorClick /> Apply
           </Button>
         );
-      else
-        y = (
-          <Button onClick={this.handleShowApplied}>
-            <HiOutlineCursorClick /> Applied Users
-          </Button>
-        );
       lease = (
         <div>
           {" "}
@@ -271,12 +271,6 @@ class HomeDescription extends React.Component {
           </h4>
           <p>{data.LeaseTerms}</p>
         </div>
-      );
-    } else {
-      y = (
-        <Button onClick={this.handleShowApplied}>
-          <HiOutlineCursorClick /> Applied Users
-        </Button>
       );
     }
 
@@ -291,7 +285,11 @@ class HomeDescription extends React.Component {
                   width: "100%",
                   marginBottom: "30px",
                 }}
-                src="/home.jpg"
+                src={
+                  data.ImageURL && data.ImageURL.length > 0
+                    ? data.ImageURL[0]
+                    : "/home.jpg"
+                }
               />
               <Row>
                 <Col md="6">
@@ -300,7 +298,11 @@ class HomeDescription extends React.Component {
                       objectFit: "cover",
                       width: "100%",
                     }}
-                    src="/home.jpg"
+                    src={
+                      data.ImageURL && data.ImageURL.length > 1
+                        ? data.ImageURL[1]
+                        : "/home.jpg"
+                    }
                   />
                 </Col>
                 <Col md="6">
@@ -309,7 +311,11 @@ class HomeDescription extends React.Component {
                       objectFit: "cover",
                       width: "100%",
                     }}
-                    src="/home.jpg"
+                    src={
+                      data.ImageURL && data.ImageURL.length > 2
+                        ? data.ImageURL[2]
+                        : "/home.jpg"
+                    }
                   />
                 </Col>
                 {/* <div style={{ margin: "0 auto" }}>

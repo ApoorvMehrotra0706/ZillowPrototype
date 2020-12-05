@@ -6,6 +6,18 @@ const Users = require('../Models/UsersModel');
 const Listings = require('../Models/Listings');
 
 class User {
+  NotExists(data, FavouriteHomes) {
+    const fav = data.FavouriteHomes;
+    let ret = true;
+    fav.forEach(function (arrayItem) {
+      if (arrayItem.ListingID === FavouriteHomes.ListingID) {
+        ret = false;
+      }
+    });
+    console.log(fav);
+    return ret;
+  }
+
   addFavoriteHome(req, res) {
     // eslint-disable-next-line prefer-const
     try {
@@ -18,29 +30,31 @@ class User {
           res.end('Network error');
         }
         if (data) {
-          Users.updateOne(
-            { UserID },
-            { $push: { FavouriteHomes: req.body.FavouriteHomes } },
-            async (er, result) => {
-              if (er) {
-                res.writeHead(500, {
-                  'Content-Type': 'text/plain',
-                });
-                res.end('Network error');
+          if (await this.NotExists(data, req.body.FavouriteHomes)) {
+            Users.updateOne(
+              { UserID },
+              { $push: { FavouriteHomes: req.body.FavouriteHomes } },
+              async (er, result) => {
+                if (er) {
+                  res.writeHead(500, {
+                    'Content-Type': 'text/plain',
+                  });
+                  res.end('Network error');
+                }
+                if (result) {
+                  res.writeHead(200, {
+                    'Content-Type': 'text/plain',
+                  });
+                  res.end('Added the favorite home');
+                } else {
+                  res.writeHead(400, {
+                    'Content-Type': 'text/plain',
+                  });
+                  res.end('Addition of favorite home failed');
+                }
               }
-              if (result) {
-                res.writeHead(200, {
-                  'Content-Type': 'text/plain',
-                });
-                res.end('Added the favorite home');
-              } else {
-                res.writeHead(400, {
-                  'Content-Type': 'text/plain',
-                });
-                res.end('Addition of favorite home failed');
-              }
-            }
-          );
+            );
+          }
         }
       });
     } catch (error) {
