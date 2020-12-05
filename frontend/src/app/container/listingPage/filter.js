@@ -46,6 +46,7 @@ class ListingPage extends React.Component {
         HomeType: this.state.HomeType,
         Parking: this.state.Parking,
         YearBuilt: this.state.YearBuilt,
+        SearchName: this.state.SearchName,
       },
     };
     axios.defaults.headers.common.authorization = localStorage.getItem(
@@ -80,7 +81,6 @@ class ListingPage extends React.Component {
       HomeType: this.state.HomeType,
       Parking: this.state.Parking,
       YearBuilt: this.state.YearBuilt,
-      SearchName: this.state.SearchName,
     };
     if (
       localStorage.getItem("role") == "Seller" ||
