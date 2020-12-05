@@ -7,3 +7,4 @@ export const ADMIN = "ADMIN";
 export const FAV_HOMES = "FAV_HOMES";
 export const MY_HOMES = "MY_HOMES";
 export const FAV_SEARCH = "FAV_SEARCH";
+export const GET_APPLIED = "GET_APPLIED";
