@@ -6,6 +6,13 @@
 * Pranjay Sagar 
 * Swapnil Parihar
 
+## Summary of Area of contributions for each team member.
+* Apoorv Mehrotra : Cloud Deployment and API development for admin and favorite searches.
+* Pranav Karmalkar: Design of filters , favorite properties searches and listing UI
+* Pranjay Sagar: Encryption ,Database design and APIs related to listings and properties
+* Swapnil Parihar: Design of Task Board, pseudo-SCRUM master  and UI for sign-up, login and admin pages.
+* All: API Documentation design discussion
+ 
 ## Problem Statement
 Develop a web application that lets users buy, sell or rent homes(Something like Zillow.com). The project aims at building a web app portal to faciliate the selling/renting of a house. It provides a platform for the below personas to connect
 * Landlord <-> Renter
@@ -54,6 +61,8 @@ Journal: https://github.com/gopinathsjsu/fa20-cmpe-202-sec-02-team-project-team_
 Sprint Sheet: https://github.com/gopinathsjsu/fa20-cmpe-202-sec-02-team-project-team_3/blob/master/SCRUM_Sheet/Team3_SCRUM_Sheet.xlsx
 
 Project Task Board: https://github.com/gopinathsjsu/fa20-cmpe-202-sec-02-team-project-team_3/projects/3
+
+Git contributions: https://github.com/gopinathsjsu/fa20-cmpe-202-sec-02-team-project-team_3/graphs/contributors
 
 ## Feature Set
   The different features of the system are:
