@@ -72,54 +72,56 @@ class AppliedBuyer extends React.Component {
   };
   render() {
     let th;
-    var list = this.props.applied.map(
-      ({
-        ApplicantID,
-        _id,
-        ApplicantName,
-        Message,
-        CreditScore,
-        EmpInformation,
-        PriceQuoted,
-        Status,
-        ListingID,
-      }) => {
-        let td;
-        if (
-          localStorage.getItem("role") == "Landlord" ||
-          localStorage.getItem("role") == "Realtor"
-        ) {
-          td = (
-            <>
-              <td>{CreditScore}</td>
-              <td>{EmpInformation}</td>
-            </>
+    var list;
+    if (this.props.applied.res != "Network error")
+      list = this.props.applied.map(
+        ({
+          ApplicantID,
+          _id,
+          ApplicantName,
+          Message,
+          CreditScore,
+          EmpInformation,
+          PriceQuoted,
+          Status,
+          ListingID,
+        }) => {
+          let td;
+          if (
+            localStorage.getItem("role") == "Landlord" ||
+            localStorage.getItem("role") == "Realtor"
+          ) {
+            td = (
+              <>
+                <td>{CreditScore}</td>
+                <td>{EmpInformation}</td>
+              </>
+            );
+          }
+          console.log(Status);
+          return (
+            <tr>
+              <td>{ApplicantName}</td>
+              <td>{PriceQuoted}</td>
+              <td>{Message}</td>
+              {td}
+              <td>
+                <Form.Control
+                  as="select"
+                  value={Status}
+                  onChange={(e) => {
+                    this.changeUserStatus(e, ApplicantID, ListingID, _id);
+                  }}
+                >
+                  <option>Pending</option>
+                  <option>Rejected</option>
+                  <option>Accepted</option>
+                </Form.Control>
+              </td>
+            </tr>
           );
         }
-        console.log(Status);
-        return (
-          <tr>
-            <td>{ApplicantName}</td>
-            <td>{PriceQuoted}</td>
-            <td>{Message}</td>
-            {td}
-            <td>
-              <Form.Control
-                as="select"
-                value={Status}
-                onChange={(e) => {
-                  this.changeUserStatus(e, ApplicantID, ListingID, _id);
-                }}
-              >
-                <option>Pending</option>
-                <option>Rejected</option>
-                <option>Accepted</option>
-              </Form.Control>
-            </td>
-          </tr>
-        );
-      }
-    );
+      );
     if (
       localStorage.getItem("role") == "Landlord" ||
       localStorage.getItem("role") == "Realtor"
@@ -153,9 +155,6 @@ class AppliedBuyer extends React.Component {
         <Modal.Footer>
           <Button variant="secondary" onClick={this.props.handleClose}>
             Close
-          </Button>
-          <Button variant="primary" onClick={this.props.handleClose}>
-            Save Changes
           </Button>
         </Modal.Footer>
       </Modal>
