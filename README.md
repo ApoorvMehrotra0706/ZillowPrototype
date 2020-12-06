@@ -38,8 +38,6 @@ Develop a web application that lets users buy, sell or rent homes(Something like
 * AWS for the deployment
 
 ## Sample UI WireFrames 
-#### Sign-Up WireFrame 
-<img src = "Individual_wireframes/SignUp_WireFrame.jpg" width="1001">
 
 #### Login WireFrame 
 <img src = "Individual_wireframes/Login_WireFrame.jpg" width="1001">
@@ -57,6 +55,36 @@ Sprint Sheet: https://github.com/gopinathsjsu/fa20-cmpe-202-sec-02-team-project-
 
 Project Task Board: https://github.com/gopinathsjsu/fa20-cmpe-202-sec-02-team-project-team_3/projects/3
 
+## Feature Set
+  The different features of the system are:
+  *	Persistent data: The data is stored in Mongo DB and hence is available online.
+  * Easy and intuitive UI: The frontend is simple and interactive and is easy to use.
+  * Authentication and Authorization: Only the users registered in the system with proper credentials can access the system.
+  * Confidentiality: The password is stored in encrypted form in the database.
+  * Cloud Deployment: The system can handle many concurrent users due to the use of load balancers during the Cloud Deployment
+  * Session Management: We are maintaining the sessions and roles for the users using browser storage.
+
+  The main functionalities of the system are:
+
+  User:
+  *	Any new user(Renter, Seller, Landlord, buyer, realtor, and even admin)  can sign-up using a single portal and access the website's content after approval.
+  *	A Seller, landlord, and realtor can add new listings for their properties. Various attributes, including but not limited to the house's price, its construction year, date of the open house, and lease agreement specifications for the house, can be specified by the person adding the listing. 
+  *	Once posted, these listings can be edited or deleted.
+  *	A dynamic text message is generated based on the inputs for a given property that describes the whole property.
+  *	A user can add favorite searches and favorite listings and save them. A buyer or a renter can apply for a listing and then wait for the seller, realtor, or landlord's approval.
+  *	Sellers, realtors, and buyers have an extra option to view all the properties that they have posted. They can also buy, rent another house if they would want to.
+  *	The application provides the user with a search option to browse through all the listings.  This search shows only the listings suited for his/her needs.
+
+  Admin:
+  *	Any new Admin can sign up using the same web page as the user.
+  *	Any user can be approved or rejected by the administrator
+  *	Even after deleting a user, his record is kept in the database so that they cannot re-register unless they contact the admin
+  *	To simplify the approval process, we have 'drop-down menus' to filter the pending requests. 
+  *	Admin dashboard can only be visible if one login in as an admin. For all other types of users, the property listing page is shown. 
+
+## Overall Burndowm Chart of the Project
+
+<img src = "Overall_Burndown_Chart.JPG" width="1000">
 
 ## Directory Structure for the Repository
 
