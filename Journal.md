@@ -4,16 +4,16 @@
 
 ## Tasks Completed
 
-- Apoorv Mehrotra-
+- Apoorv Mehrotra- Developed Class Diagram
 - Pranav Karmalkar- UI WireFrame for Sign-up and log in, Architecture Diagram
-- Pranjay Sagar-
+- Pranjay Sagar- Created Db-Schema diagram.
 - Swapnil Parihar- Sign-up UI, SCRUM Sheet formatting
 
 ## Tasks Planning to work Next
 
-- Apoorv Mehrotra-
+- Apoorv Mehrotra- Decide appropriate Techstacks
 - Pranav Karmalkar- UI WireFrame for Listings, Add Listing UI
-- Pranjay Sagar-
+- Pranjay Sagar- Decide on APIs and documenting them
 - Swapnil Parihar- Project Board design, Login UI, Update Sign-up
 
 ## Blocked Tasks
@@ -32,16 +32,16 @@
 
 ## Tasks Completed
 
-- Apoorv Mehrotra-
+- Apoorv Mehrotra- Finalized the Techstacks
 - Pranav Karmalkar-UI WireFrame for Listings, Add Listing UI
-- Pranjay Sagar-
+- Pranjay Sagar- Finalized all the APIs and documented them and shared on the google drive.
 - Swapnil Parihar- Project Board design, Login UI, Update Sign-up functionality
 
 ## Tasks Planning to work Next
 
-- Apoorv Mehrotra-
+- Apoorv Mehrotra- Model creation for mongodb 
 - Pranav Karmalkar-Continue add listing UI, Show listing UI
-- Pranjay Sagar-
+- Pranjay Sagar- Creation of parent and child classes as per class diagram
 - Swapnil Parihar- Admin UI, Wire Frames for properties
 
 ## Blocked Tasks
@@ -51,7 +51,7 @@
 ## XP Core values
 
     Feedback:
-    Project Task Board model was upgraded, and automation settings changed as per inputs from Apoorva and Pranjay
+    Project Task Board model was upgraded, and automation settings changed as per inputs from Apoorv and Pranjay
 
 ---
 
@@ -59,16 +59,16 @@
 
 ## Tasks Completed
 
-- Apoorv Mehrotra-
+- Apoorv Mehrotra- Completed creation for mongodb 
 - Pranav Karmalkar-add listing UI, Show listing UI-Part 1
-- Pranjay Sagar-
+- Pranjay Sagar- Created parent and child classes as per class diagram
 - Swapnil Parihar-Admin UI
 
 ## Tasks Planning to work Next
 
-- Apoorv Mehrotra-
+- Apoorv Mehrotra- Signup setup with password encryption.
 - Pranav Karmalkar-Show listing UI-Part 2
-- Pranjay Sagar-
+- Pranjay Sagar- Collaborating static data required throughout the application, and create common API for the same.
 - Swapnil Parihar- Wire Frames for properties, Format and make updates to Journal and SCRUM sheet
 
 ## Blocked Tasks
@@ -86,16 +86,16 @@
 
 ## Tasks Completed
 
-- Apoorv Mehrotra-
+- Apoorv Mehrotra- Signup setup with password encryption.
 - Pranav Karmalkar-Show listing UI
-- Pranjay Sagar-
+- Pranjay Sagar- COllected static data required throughout the application, and created common API for the same.
 - Swapnil Parihar- Wire Frames for properties, Format and make updates to Journal and SCRUM sheet
 
 ## Tasks Planning to work Next
-
-- Apoorv Mehrotra-
+ 
+- Apoorv Mehrotra- Login setup as per roles
 - Pranav Karmalkar- Apply filters UI, Apply for a property
-- Pranjay Sagar-
+- Pranjay Sagar- Incorporate passport-jwt authentication with login setup
 - Swapnil Parihar- Apply filters UI, Edit property-Part-1
 
 ## Blocked Tasks
@@ -111,16 +111,16 @@
 
 ## Tasks Completed
 
-- Apoorv Mehrotra-
+- Apoorv Mehrotra- Login setup as per roles
 - Pranav Karmalkar- Apply filters UI, Apply for a property
-- Pranjay Sagar-
+- Pranjay Sagar- Added passport-jwt authentication with login setup
 - Swapnil Parihar- Apply filters UI, Edit property-Part-1
 
 ## Tasks Planning to work Next
 
-- Apoorv Mehrotra-
+- Apoorv Mehrotra- Fetch users and Audit users API for Admin Persona
 - Pranav Karmalkar-Show property UI
-- Pranjay Sagar-
+- Pranjay Sagar- Add Listing API for landlord, seller, and realtor
 - Swapnil Parihar-Edit property, update Journal
 
 ## Blocked Tasks
@@ -136,16 +136,16 @@
 
 ## Tasks Completed
 
-- Apoorv Mehrotra-
+- Apoorv Mehrotra- Fetch users and Audit users API for Admin Persona
 - Pranav Karmalkar- Show property UI
-- Pranjay Sagar-
+- Pranjay Sagar- Add Listing API for landlord, seller, and realtor
 - Swapnil Parihar- Edit property-Part 1, update Journal
 
 ## Tasks Planning to work Next
 
-- Apoorv Mehrotra-
+- Apoorv Mehrotra- Readme file creation, Update User Signup API for allowing same email-id for multiple roles
 - Pranav Karmalkar-Add property to favorite, Delete property
-- Pranjay Sagar-
+- Pranjay Sagar- 6 APIs 3 for getting Listings and 3 for fetting applications for landlord, seller, and realtor personas
 - Swapnil Parihar-Edit Property-2, apply for property
 
 ## Blocked Tasks
@@ -161,16 +161,16 @@
 
 ## Tasks Completed
 
-- Apoorv Mehrotra-
+- Apoorv Mehrotra- Readme file creation, Updated User Signup API for allowing same email-id for multiple roles
 - Pranav Karmalkar-Add property to favorite, Delete property
-- Pranjay Sagar-
+- Pranjay Sagar- Developed 6 APIs 3 for getting Listings and 3 for fetching applications for landlord, seller, and realtor personas
 - Swapnil Parihar-Edit Property-2, apply for property
 
 ## Tasks Planning to work Next
 
-- Apoorv Mehrotra-
+- Apoorv Mehrotra- APIs for Favorite Searches and Favorite Home Functionality
 - Pranav Karmalkar-Get favorite home-Part 1, Get favorite search
-- Pranjay Sagar-
+- Pranjay Sagar- 6 APIs 3 for Delete Listings and 3 for processing applications for landlord, seller, and realtor personas
 - Swapnil Parihar-Apply for property
 
 ## Blocked Tasks
@@ -186,9 +186,9 @@
 
 ## Tasks Completed
 
-- Apoorv Mehrotra-
+- Apoorv Mehrotra- Developed APIs for Favorite Searches and Favorite Home Functionality, Resolocker issue related to the date field in Database.
 - Pranav Karmalkar-Get favorite home-Part 1, Get favorite search
-- Pranjay Sagar-
+- Pranjay Sagar- Developed 6 APIs 3 for Delete Listings and 3 for processing applications for landlord, seller, and realtor personas
 - Swapnil Parihar-Apply for property
 
 ## Blocked Tasks
@@ -197,9 +197,9 @@
 
 ## Tasks Planning to work Next
 
-- Apoorv Mehrotra-
+- Apoorv Mehrotra- Search API Updates as per discussion in current sprint.
 - Pranav Karmalkar-My listing for the user, Get favorite home
-- Pranjay Sagar-
+- Pranjay Sagar- Develope File Application APIs 
 - Swapnil Parihar-My application status, Create the ppt for the project
 
 ## Blocked Tasks
@@ -216,16 +216,16 @@
 
 ## Tasks Completed
 
-- Apoorv Mehrotra-
+- Apoorv Mehrotra- Updated the Search API as per discussed in last sprint.
 - Pranav Karmalkar- My listing for the user, Get favorite home
-- Pranjay Sagar-
+- Pranjay Sagar- Developed File Application APIs 
 - Swapnil Parihar-My application status, Create the ppt for the project
 
 ## Tasks Planning to work Next
 
-- Apoorv Mehrotra-Cloud Deployment, LoadBlancer deployment
+- Apoorv Mehrotra- Email code handling and encorporating it with File application API, Cloud Deployment, LoadBlancer deployment on autoscaling cluster
 - Pranav Karmalkar-Cloud Deployment, UI bug fixing
-- Pranjay Sagar-S3 bucket implementation, Backend bug fixing
+- Pranjay Sagar-  Image Upload functionality UI as well as API development, S3 bucket implementation, Backend bug fixing
 - Swapnil Parihar- UI validation and bug reporting after cloud deployment
 
 ## Blocked Tasks
@@ -242,9 +242,9 @@
 
 ## Tasks Completed
 
-- Apoorv Mehrotra- Cloud Deployment, LoadBlancer deployment
+- Apoorv Mehrotra-  Email code handling and appended it with File application API, Cloud Deployment, LoadBlancer deployment along with auto scaling
 - Pranav Karmalkar- Cloud Deployment, UI bug fixing
-- Pranjay Sagar- S3 bucket implementation, Backend bug fixing
+- Pranjay Sagar- Image Upload functionality UI as well as API developed, S3 bucket implementation, Backend bug fixing
 - Swapnil Parihar- UI validation and bug reporting after cloud deployment
 
 ## XP Core values
