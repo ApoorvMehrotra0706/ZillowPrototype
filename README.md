@@ -55,6 +55,9 @@ Develop a web application that lets users buy, sell or rent homes(Something like
 ## Database Schema
 <img src = "Database Schema.jpg" width="1000">
 
+## Sample Snapshot of the Project Task Board during project Development
+<img src = "Snapshot_ProjectTaskBoard.JPG" width="1000">
+
 ## Links for the Software Engineering Boards:
 Journal: https://github.com/gopinathsjsu/fa20-cmpe-202-sec-02-team-project-team_3/blob/master/Journal.md
 
