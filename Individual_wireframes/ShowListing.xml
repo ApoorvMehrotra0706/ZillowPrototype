@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2020-12-06T05:44:10.076Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36" etag="1pJpj-4le6Kt4xQRZvVp" version="13.10.9" type="google">
+  <diagram id="6b5xNh4vrLHh9z-lD_-k" name="Page-1">
+    <mxGraphModel dx="3460" dy="1827" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="gKBEvMhtLqYrbPCflChq-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=22;" parent="1" vertex="1">
+          <mxGeometry width="1100" height="840" as="geometry" />
+        </mxCell>
+        <mxCell id="gKBEvMhtLqYrbPCflChq-2" value="Primary Image" style="rounded=0;whiteSpace=wrap;html=1;fontSize=22;" parent="1" vertex="1">
+          <mxGeometry x="40" y="160" width="460" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="gKBEvMhtLqYrbPCflChq-5" value="Site Logo" style="rounded=0;whiteSpace=wrap;html=1;fontSize=22;" parent="1" vertex="1">
+          <mxGeometry x="460" y="50" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gKBEvMhtLqYrbPCflChq-6" value="Hi User" style="rounded=0;whiteSpace=wrap;html=1;fontSize=22;" parent="1" vertex="1">
+          <mxGeometry x="860" y="50" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gKBEvMhtLqYrbPCflChq-8" value="Secondary Image" style="whiteSpace=wrap;html=1;aspect=fixed;fontSize=22;" parent="1" vertex="1">
+          <mxGeometry x="40" y="430" width="220" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="gKBEvMhtLqYrbPCflChq-9" value="Listing Information&amp;nbsp;&lt;br&gt;&lt;br&gt;Cost and Headline&amp;nbsp;&lt;br&gt;&lt;br&gt;Text describing the house&lt;br&gt;&lt;br&gt;All details About the house&lt;br&gt;&lt;br&gt;Lease Agreement(Optional)" style="whiteSpace=wrap;html=1;aspect=fixed;fontSize=22;" parent="1" vertex="1">
+          <mxGeometry x="529" y="160" width="490" height="490" as="geometry" />
+        </mxCell>
+        <mxCell id="gKBEvMhtLqYrbPCflChq-18" value="Secondary Image" style="whiteSpace=wrap;html=1;aspect=fixed;fontSize=22;" parent="1" vertex="1">
+          <mxGeometry x="280" y="430" width="220" height="220" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
